@@ -1,1 +1,31 @@
-html,body{margin: 0;padding: 0;}
+@charset "utf-8";
+.wrap{
+	width: 100%;
+	background: #f3f3f3;
+}
+.wrap .msg{
+	margin: 0 auto;
+	width: 1206px;
+	height: 36px;
+	line-height: 36px;
+}
+.wrap .msg .study{
+	float: left;
+	color: #333333;
+}
+.wrap .msg .study a{
+	color: #21a557;
+}
+.wrap .msg .close{
+	float: right;
+	color: #333333;
+}
+.wrap .nav{
+	margin: 0 auto;
+	width: 1206px;
+	height: 89px;
+	line-height: 89px;
+}
+.wrap .nav h1{
+	color: #39a030;
+}
