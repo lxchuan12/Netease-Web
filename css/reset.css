@@ -4,7 +4,7 @@ html,body,h1,h2,h3,h4,h5,p,dl,dd,ul,ol,form,input,textarea,th,td,select { margin
 em { font-style:normal; }
 li { list-style:none; }
 a { text-decoration:none; }
-img { border:none; vertical-align:top; }
+img { border:none;}
 table { border-collapse:collapse; }
 input,textarea { outline:none; }
 textarea { resize:none; overflow:auto; }

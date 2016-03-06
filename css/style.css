@@ -23,9 +23,86 @@
 .m-nav{
 	margin: 0 auto;
 	width: 1206px;
-	height: 89px;
-	line-height: 89px;
+	height: 90px;
+	line-height: 90px;
 }
 .m-nav h1{
+	float: left;
 	color: #39a030;
+}
+.m-nav h1 span{
+	color: #333333;
+}
+.m-nav .fans{
+	float: left;
+	font-size: 16px;
+}
+.m-nav .fans #focus{
+	display: block;
+	width: 54px;
+	height: 21px;
+	margin: 0 14px 0 31px;
+	color: #fff;
+	background: #21a557;
+	border-radius:2px; 
+}
+.m-nav .link{
+	float: right;
+	font-size: 16px;
+}
+.m-nav .link a{
+	color: #333333;
+}
+.m-nav .link .a1{
+	margin-right:54px; 
+}
+.m-nav .link .a2{
+	margin-right:56px; 
+}
+.m-nav .link .a3{
+	margin-right:30px; 
+}
+.m-nav .link a:hover{
+	color: #21a557;
+	
+}
+.m-nav .link .search{
+	width: 18px;
+	height: 18px;
+	margin-right:16px; 
+}
+/* banner */
+.m-banner{
+	width: 100%;
+	text-align: center;
+	position: relative;
+	height: 460px;
+}
+.m-banner #pointer{
+	display: inline-block;
+	position: absolute;
+	margin: 0 auto;
+	bottom: 20px;
+}
+.m-banner #pointer i{
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background: #000;
+	cursor: pointer;
+}
+.m-banner #pointer i .active{
+	background: #fff;
+}
+.m-banner #pointer i+i{
+	/* i+i指：第一个i后面的i */
+	margin-left:11px;
+}
+/* intro */
+.m-intro{
+	margin: 0 auto;
+	width: 1206px;
+	height: 275px;
+	border-bottom:2px solid #f8f8f8; 
 }
