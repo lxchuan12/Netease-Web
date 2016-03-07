@@ -9,7 +9,13 @@ table { border-collapse:collapse; }
 input,textarea { outline:none; }
 textarea { resize:none; overflow:auto; }
 body { font-size:12px; font-family:"微软雅黑"; }
-/* 清除浮动 */
+/* 功能样式 */
+.f-fl{
+	float: left;
+}
+.f-fr{
+	float: right;
+}
 .clearfix::after{
 	content: ".";
 	display: block;
