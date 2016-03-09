@@ -19,30 +19,32 @@
 .m-nav{
 	margin: 0 auto;
 	width: 1206px;
-	height: 90px;
-	line-height: 90px;
+	height: 89px;
+	line-height: 89px;
 }
 .m-nav h1{
 	color: #39a030;
+	font:normal bold 28px/89px 'Gill Sans MT';
 }
 .m-nav h1 span{
 	color: #333;
+	font:22px/1.14 "Arial","Hiragino Sans GB","Microsoft YaHei";
 }
 .m-nav .fans{
 	font-size: 16px;
 }
 .m-nav .fans .focus{
-	display: block;
-	width: 54px;
-	height: 21px;
+	/*display: block;*/
+/*	width: 54px;
+	height: 21px;*/
 	margin: 0 14px 0 31px;
 	color: #fff;
 	background: #21a557;
 	border-radius:2px; 
+	cursor: pointer;
 }
 .m-nav .link{
 	font-size: 16px;
-	background: url(../images/search.png) no-repeat right center;
 }
 .m-nav .link a{
 	color: #333;
@@ -56,14 +58,17 @@
 .m-nav .link .a3{
 	margin-right:30px; 
 }
-.m-nav .link a:hover{
+.m-nav .link .a1:hover{
 	color: #21a557;
 	
 }
 .m-nav .link .search{
+
 	width: 18px;
 	height: 18px;
-	margin-right:16px; 
+	display: block;
+	margin-right:16px;
+	/*background: url(../images/search.png) no-repeat 0 10px;*/
 }
 /* banner */
 .m-banner{
@@ -71,7 +76,6 @@
 	text-align: center;
 	position: relative;
 	height: 460px;
-	border: 1px solid #f00;
 }
 .m-banner .banner img{
 	height: 460px;
@@ -87,11 +91,11 @@
 	width: 10px;
 	height: 10px;
 	border-radius: 50%;
-	background: #000;
+	background: #fff;
 	cursor: pointer;
 }
 .m-banner #pointer i.z-crt{
-	background: #fff;
+	background: #000;
 }
 .m-banner #pointer i+i{
 	/* i+i指：第一个i后面的i */
@@ -127,4 +131,34 @@
 }
 .m-intro .open a:hover{
 	text-decoration: underline;
+}
+/* g-workPlace */
+.g-workPlace{
+	width:1206px;
+	height: 226px;
+	margin: 0 auto;
+	border: 1px solid #f00;
+
+}
+/* g-classList */
+.g-classList{
+	width: 1206px;
+	height: 1632px;
+	margin: 0 auto;
+	border: 1px solid #f00;
+	
+}
+/* g-footer */
+.g-footer{
+	width: 100%;
+	height: 262px;
+	background: #2C3339;
+}
+.g-footer .m-footer{
+	width: 1206x;
+	height: 262px;
+	margin: 0 auto;
+}
+.g-footer .m-footer .copyRight{
+	
 }
