@@ -155,10 +155,41 @@
 	background: #2C3339;
 }
 .g-footer .m-footer{
-	width: 1206x;
+	width: 1206px;
 	height: 262px;
 	margin: 0 auto;
+	border:1px solid #f00;
 }
 .g-footer .m-footer .copyRight{
-	
+	padding-top:92px; 
+	width: 544px;
+	height: 170px;
+}
+.g-footer .m-footer .copyRight h2{
+	color: #39a030;
+	font:normal bold 22px/89px 'Gill Sans MT';
+}
+.g-footer .m-footer .copyRight span{
+	color: #39a030;
+	font:22px/1.14 "Arial","Hiragino Sans GB","Microsoft YaHei";
+}
+.g-footer .m-footer .friendLink{
+	width: 210px;
+	height: 186px;
+}
+.g-footer .m-footer .about{
+	width: 134px;
+	height: 186px;
+}
+.g-footer .m-footer .more{
+	width: 134px;
+	height: 156px;
+}
+.g-footer .m-footer p,.g-footer .m-footer a{
+	color: #AAABAC;
+	font-size: 14px;
+}
+
+.g-footer .m-footer a:hover{
+	text-decoration: underline;
 }
