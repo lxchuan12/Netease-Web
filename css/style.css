@@ -158,10 +158,10 @@
 	width: 1206px;
 	height: 262px;
 	margin: 0 auto;
-	border:1px solid #f00;
 }
 .g-footer .m-footer .copyRight{
-	padding-top:92px; 
+	padding-top:92px;
+	padding-left: 54px;
 	width: 544px;
 	height: 170px;
 }
@@ -188,6 +188,8 @@
 .g-footer .m-footer p,.g-footer .m-footer a{
 	color: #AAABAC;
 	font-size: 14px;
+	display: block;
+
 }
 
 .g-footer .m-footer a:hover{
