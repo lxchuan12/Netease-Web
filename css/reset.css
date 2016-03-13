@@ -8,7 +8,7 @@ img { border:none;}
 table { border-collapse:collapse; }
 input,textarea { outline:none; }
 textarea { resize:none; overflow:auto; }
-body { font-size:12px; font-family:"微软雅黑"; }
+body {background:#fff; font-size:12px; font-family:"微软雅黑"; }
 /* 功能样式 */
 .f-fl{
 	float: left;

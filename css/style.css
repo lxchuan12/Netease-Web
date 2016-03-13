@@ -61,10 +61,8 @@
 }
 .m-nav .link a:hover{
 	color: #21a557;
-	
 }
 .m-nav .link .search{
-
 	width: 18px;
 	height: 18px;
 	display: block;
@@ -77,9 +75,11 @@
 	text-align: center;
 	position: relative;
 	height: 460px;
+	overflow: hidden;
 }
 .m-banner .banner img{
 	height: 460px;
+	
 }
 .m-banner #pointer{
 	display: inline-block;
@@ -105,29 +105,40 @@
 /* intro */
 .m-intro{
 	margin: 0 auto;
-	width: 1206px;
-	height: 275px;
-	border: 1px solid #f00;
+	width: 1188px;
+	height: 175px;
+	padding: 61px 13px 59px 5px;
 	border-bottom:2px solid #f8f8f8;
 }
-.m-intro .open{
-	/*width: 420px;
-	height: 275px;*/
-	width: 350px;
-	height: 180px;
-
+.m-intro .intro{
+	width: 396px;
+	height: 175px;
+}
+.m-intro .open{	
+	width: 291px;
+	height: 175px;
+}
+.m-intro .intro img{
+	padding:7px 20px 88px 5px;
+	width: 80px;
+	height: 80px;
 }
 .m-intro .open h2{
 	font-size: 22px;
+	padding-bottom: 12px;
 	color: #333;
 }
 .m-intro .open p{
+	width: 240px;
+	height: 120px;
 	font-size: 14px;
+	line-height: 24px;
 	color:#666;
-	background: url("../images/intro.png") no-repeat center center;
+	
 }
 .m-intro .open a{
 	font-size: 14px;
+	line-height: 24px;
 	color:#39a030;
 }
 .m-intro .open a:hover{
@@ -135,19 +146,47 @@
 }
 /* g-workPlace */
 .g-workPlace{
-	width:1206px;
-	height: 226px;
-	margin: 0 auto;
-	border: 1px solid #f00;
-
+	width:100%;
+	height: 220px;
+	overflow: hidden;
 }
-/* g-classList */
-.g-classList{
+
+/* g-courseList */
+.g-courseList{
 	width: 1206px;
-	height: 1632px;
+	padding: 81px 0 120px 0;
+	height: 1350px;
 	margin: 0 auto;
+}
+.g-courseList .m-courseList{
+	width: 960px;
+	height: 1350px;
 	border: 1px solid #f00;
-	
+}
+.g-courseList .m-courseList .navUl{
+	width: 200px;
+	height: 50px;
+	padding: 0 760px 9px 0;
+}
+.g-courseList .m-courseList .navUl .navLi{
+	font-size: 20px;
+	line-height: 50px;
+	text-align: center;
+	width: 100px;
+	height: 50px;
+}
+.g-courseList .m-courseList .navUl #select{
+	background: #39a030;
+	color: #fff;
+}
+.g-courseList .m-courseList .navUl #notSelect{
+	background: #fff;
+	color: #666;
+}
+.g-courseList .m-side{
+	width: 223px;
+	height: 1028px;
+	border: 1px solid #f00;
 }
 /* g-footer */
 .g-footer{
@@ -161,30 +200,33 @@
 	margin: 0 auto;
 }
 .g-footer .m-footer .copyRight{
-	padding:95px 0 80px 50px;
-	width: 393px;
+	padding:93px 0 80px 50px;
+	width: 392px;
 	height: 89px;
 }
 .g-footer .m-footer .copyRight p{
-	line-height: 26px;
+	line-height: 25px;
 }
 .g-footer .m-footer .copyRight h2{
 	color: #39a030;
-	font:normal bold 22px/89px 'Gill Sans MT';
+	font:normal bold 22px/36px 'Gill Sans MT';
 }
 .g-footer .m-footer .copyRight span{
 	color: #39a030;
 	font:22px/1.14 "Arial","Hiragino Sans GB","Microsoft YaHei";
 }
 .g-footer .m-footer .friendLink{
-	padding: 82px 0 79px 150px;
+	padding: 81px 0 80px 150px;
 	width: 110px;
-	height: 111px;
+	height: 101px;
 }
 .g-footer .m-footer .about{
-	padding: 81px 0 80px 98px;
+	padding: 81px 0 80px 101px;
 	width: 61px;
 	height: 101px;
+}
+.g-footer .m-footer .about .weibo{
+	background: url(../images/weibo.png) no-repeat right center;
 }
 .g-footer .m-footer .more{
 	padding: 81px 207px 109px 73px;
@@ -192,14 +234,14 @@
 	height: 72px;
 }
 .g-footer .m-footer p{
-	line-height: 26px;
+	line-height: 25px;
 	color: #AAABAC;
-	font-size: 14px;
+	font-size: 12.5px;
 }
 .g-footer .m-footer a{
-	line-height: 30px;
+	line-height: 29px;
 	color: #AAABAC;
-	font-size: 14px;
+	font-size: 14.5px;
 	display: block;
 
 }
