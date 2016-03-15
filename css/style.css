@@ -9,13 +9,16 @@
 	height: 36px;
 	line-height: 36px;
 }
+.wrap .m-msg .close{
+	cursor:pointer;
+}
 .wrap .m-msg .study,.wrap .m-msg .close{
 	color: #333;
 }
 .wrap .m-msg .study a{
 	color: #21a557;
 }
-
+/* m-nav */
 .m-nav{
 	margin: 0 auto;
 	width: 1206px;
@@ -177,6 +180,7 @@
 	text-align: center;
 	width: 200px;
 	height: 50px;
+	box-shadow:0 1px 2px #d4d3d3;
 }
 .g-courseList .m-courseList .navUl #select{
 	background: #39a030;
@@ -209,7 +213,6 @@
 	float: left;
 	width: 30px;
 	height: 20px;
-	/*padding: 0 10px 0 10px;*/
 }
 .g-courseList .m-courseList .pagesLi a.prev,
 .g-courseList .m-courseList .pagesLi a.next{
@@ -234,12 +237,66 @@
 }
 
 
-
+/* g-courseList .m-side */
 .g-courseList .m-side{
 	width: 223px;
 	height: 1028px;
-	border: 1px solid #f00;
 }
+.g-courseList .m-side .videoInfo{
+	width: 183px;
+	height: 230px;
+	padding: 0 20px 0 20px;
+	background: #FFF;
+	box-shadow:0 1px 2px #dddddd;
+
+}
+.g-courseList .m-side .videoInfo h3,
+.g-courseList .m-side .hotRank h3{
+	line-height: 56px;
+	font-size: 16px;
+	color: #333;
+	box-shadow:0 1px 2px #ccc;
+}
+.g-courseList .m-side .videoInfo .video{
+	margin-top: 1px;
+	width: 183px;
+	height: 173px;
+}
+.g-courseList .m-side .videoInfo .video img{
+	cursor: pointer;
+	width: 180px;
+	height: 110px;
+}
+.g-courseList .m-side .videoInfo .video p{
+	padding: 20px 0 9px 0;
+	font-size: 14px;
+}
+.g-courseList .m-side .hotRank{
+	background: #fff;
+	padding: 1px 20px 0 20px;
+	width: 183px;
+	height:778px;
+	box-shadow: 1px 2px 2px #d4d3d3;
+}
+.g-courseList .m-side .hotRank .hotRankUl{
+	background: #fff;
+	padding-top:20px;
+	width: 183px;
+	height:701px;
+
+}
+.g-courseList .m-side .hotRank .hotRankUl .hotRankLi{
+	background: #fff;
+	padding-bottom:20px;
+	width: 183px;
+	height:50px;
+}
+
+
+
+
+
+
 /* g-footer */
 .g-footer{
 	width: 100%;
