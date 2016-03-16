@@ -23,31 +23,44 @@
 	margin: 0 auto;
 	width: 1206px;
 	height: 89px;
-	line-height: 89px;
+	/*line-height: 89px;*/
 }
 .m-nav h1{
-	color: #39a030;
-	font:normal bold 28px/89px 'Gill Sans MT';
-}
-.m-nav h1 span{
+	width:235px;
+	height:22px;
+	text-align: right;
+	padding: 30px 31px 37px 1px;
 	color: #333;
-	font:22px/1.14 "Arial","Hiragino Sans GB","Microsoft YaHei";
+	font:22px/1 "Hiragino Sans GB","Microsoft YaHei";
+	background: url(../images/edu.png) no-repeat left 31px;
 }
 .m-nav .fans{
-	font-size: 16px;
+	padding: 31px 0 37px 0;
+	width:115px;
+	height: 21px;
 }
 .m-nav .fans .focus{
-	vertical-align: center;
-	/*display: inline-block;*/
+	font-size: 16px;
+	display: inline-block;
 	width: 54px;
 	height: 21px;
-	margin: 0 14px 0 31px;
+	margin-right: 14px;
 	color: #fff;
 	background: #21a557;
 	border-radius:2px; 
 	cursor: pointer;
 }
+.m-nav .fans .focus:hover{
+	background: #2fb556;
+}
+.m-nav .fans span{
+	font-size: 12px;
+	color: #666;
+}
 .m-nav .link{
+	padding:36px 16px 36px 0;
+	width:413px;
+	height: 17px;
 	font-size: 16px;
 }
 .m-nav .link a{
@@ -68,8 +81,12 @@
 .m-nav .link .search{
 	width: 18px;
 	height: 18px;
-	display: block;
-	margin-right:16px;
+	/*display: block;
+	/*margin-right:16px;*/
+	background: url(../images/search.png) no-repeat right 0;
+}
+.m-nav .link .search:hover{
+	background: url(../images/search.png) no-repeat right -19px;
 }
 /* banner */
 .m-banner{
@@ -243,15 +260,16 @@
 	height: 1028px;
 }
 .g-courseList .m-side .videoInfo{
-	width: 183px;
+	width: 223px;
 	height: 230px;
-	padding: 0 20px 0 20px;
 	background: #FFF;
 	box-shadow:0 1px 2px #dddddd;
+	margin-bottom: 1px;
 
 }
 .g-courseList .m-side .videoInfo h3,
 .g-courseList .m-side .hotRank h3{
+	text-indent:20px;
 	line-height: 56px;
 	font-size: 16px;
 	color: #333;
@@ -261,6 +279,7 @@
 	margin-top: 1px;
 	width: 183px;
 	height: 173px;
+	padding: 0 20px 0 20px;
 }
 .g-courseList .m-side .videoInfo .video img{
 	cursor: pointer;
@@ -270,29 +289,55 @@
 .g-courseList .m-side .videoInfo .video p{
 	padding: 20px 0 9px 0;
 	font-size: 14px;
+	color: #666;
 }
 .g-courseList .m-side .hotRank{
 	background: #fff;
-	padding: 1px 20px 0 20px;
-	width: 183px;
+	margin-top: 20px;
+	width: 223px;
 	height:778px;
 	box-shadow: 1px 2px 2px #d4d3d3;
 }
 .g-courseList .m-side .hotRank .hotRankUl{
+	margin: 20px 20px 0 20px;
 	background: #fff;
-	padding-top:20px;
 	width: 183px;
 	height:701px;
-
 }
 .g-courseList .m-side .hotRank .hotRankUl .hotRankLi{
 	background: #fff;
-	padding-bottom:20px;
+	margin-bottom:20px;
 	width: 183px;
 	height:50px;
 }
+.g-courseList .m-side .hotRank .hotRankUl .hotRankLi img{
+	width: 50px;
+	height: 50px;
+	float: left;
+}
+.g-courseList .m-side .hotRank .hotRankUl .hotRankLi .hotRankInfo{
+	float: left;
+	padding-left: 12px;
+	width: 121px;
+	height: 50px;
 
-
+}
+.g-courseList .m-side .hotRank .hotRankUl .hotRankLi .hotRankInfo a{
+	display: inline-block;
+	width:121px;
+	height: 27px;
+	color: #333;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+.g-courseList .m-side .hotRank .hotRankUl .hotRankLi .hotRankInfo span{
+	background: url(../images/person.png) no-repeat left center;
+	color: #999;
+	width: 60px;
+	text-align: right;
+	display: inline-block;
+}
 
 
 
