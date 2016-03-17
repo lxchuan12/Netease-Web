@@ -81,8 +81,6 @@
 .m-nav .link .search{
 	width: 18px;
 	height: 18px;
-	/*display: block;
-	/*margin-right:16px;*/
 	background: url(../images/search.png) no-repeat right 0;
 }
 .m-nav .link .search:hover{
@@ -98,7 +96,6 @@
 }
 .m-banner .banner img{
 	height: 460px;
-	
 }
 .m-banner #pointer{
 	display: inline-block;
@@ -153,7 +150,6 @@
 	font-size: 14px;
 	line-height: 24px;
 	color:#666;
-	
 }
 .m-intro .open a{
 	font-size: 14px;
@@ -215,8 +211,53 @@
 	width: 960px;
 	height: 1219px;
 	padding-top: 20px;
-	border: 1px solid #f00;
 }
+.g-courseList .m-courseList .courseList .course{
+	width: 223px;
+	height: 228px;
+	background: #fff;
+	padding: 0 1px 0 1px;
+	box-shadow:0 1px 2px #e6e6e6;
+	font-size: 12px;
+}
+.g-courseList .m-courseList .courseList .course img{
+	width: 223px;
+	height: 124px;
+}
+.g-courseList .m-courseList .courseList .course a{
+	display: inline-block;
+	width: 209px;
+	height: 32px;
+	line-height: 32px;
+	padding: 0 10px 0 4px;
+	color: #333;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+.g-courseList .m-courseList .courseList .course .org{
+	padding: 0 10px 0 4px;
+	width: 209px;
+	height: 22px;
+	text-align: left;
+	color: #999;
+}
+.g-courseList .m-courseList .courseList .course .peopleNum{
+	padding: 0 10px 0 4px;
+	width: 34px;
+	height: 16px;
+	text-align: right;
+	color: #999;
+	border-radius: 2px;
+	border: 1px solid #ddd;
+	background: url(../images/person.png) no-repeat 4px center;
+}
+.g-courseList .m-courseList .courseList .course .price{
+	color: #ff3f00;
+	line-height: 30px;
+	padding: 0 10px 0 4px;
+}
+/* 分页器g-courseList .m-courseList .pages */
 .g-courseList .m-courseList .pages{
 	width: 302px;
 	height: 20px;
@@ -263,7 +304,7 @@
 	width: 223px;
 	height: 230px;
 	background: #FFF;
-	box-shadow:0 1px 2px #dddddd;
+	box-shadow:0 1px 2px #ddd;
 	margin-bottom: 1px;
 
 }
