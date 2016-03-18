@@ -1,21 +1,21 @@
 @charset "utf-8";
-.wrap{
+.topWrap{
 	width: 100%;
 	background: #f3f3f3;
 }
-.wrap .m-msg{
+.topWrap .m-msg{
 	margin: 0 auto;
 	width: 1206px;
 	height: 36px;
 	line-height: 36px;
 }
-.wrap .m-msg .close{
+.topWrap .m-msg .close{
 	cursor:pointer;
 }
-.wrap .m-msg .study,.wrap .m-msg .close{
+.topWrap .m-msg .study,.topWrap .m-msg .close{
 	color: #333;
 }
-.wrap .m-msg .study a{
+.topWrap .m-msg .study a{
 	color: #21a557;
 }
 /* m-nav */
@@ -23,7 +23,6 @@
 	margin: 0 auto;
 	width: 1206px;
 	height: 89px;
-	/*line-height: 89px;*/
 }
 .m-nav h1{
 	width:235px;
@@ -179,13 +178,13 @@
 	margin: 0 auto;
 }
 .g-courseList .m-courseList{
-	width: 960px;
+	width: 980px;
 	height: 1350px;
 }
 .g-courseList .m-courseList .navUl{
 	width: 400px;
 	height: 50px;
-	padding: 0 560px 9px 0;
+	padding: 0 580px 9px 0;
 }
 .g-courseList .m-courseList .navUl .navLi{
 	font-size: 20px;
@@ -207,12 +206,14 @@
 .g-courseList .m-courseList .navUl #notSelect a{
 	color: #666;
 }
-.g-courseList .m-courseList .courseList{
-	width: 960px;
+.g-courseList .m-courseList .courseListUl{
+	width: 980px;
 	height: 1219px;
 	padding-top: 20px;
 }
-.g-courseList .m-courseList .courseList .course{
+.g-courseList .m-courseList .courseListUl .courseLi{
+	margin:0 20px 20px 0;
+	float: left;
 	width: 223px;
 	height: 228px;
 	background: #fff;
@@ -220,11 +221,11 @@
 	box-shadow:0 1px 2px #e6e6e6;
 	font-size: 12px;
 }
-.g-courseList .m-courseList .courseList .course img{
+.g-courseList .m-courseList .courseListUl .courseLi img{
 	width: 223px;
 	height: 124px;
 }
-.g-courseList .m-courseList .courseList .course a{
+.g-courseList .m-courseList .courseListUl .courseLi a{
 	display: inline-block;
 	width: 209px;
 	height: 32px;
@@ -235,16 +236,16 @@
 	white-space: nowrap;
 	overflow: hidden;
 }
-.g-courseList .m-courseList .courseList .course .org{
+.g-courseList .m-courseList .courseListUl .courseLi .org{
 	padding: 0 10px 0 4px;
 	width: 209px;
 	height: 22px;
 	text-align: left;
 	color: #999;
 }
-.g-courseList .m-courseList .courseList .course .peopleNum{
-	padding: 0 10px 0 4px;
-	width: 34px;
+.g-courseList .m-courseList .courseListUl .courseLi .peopleNum{
+	margin: 0 10px 0 4px;
+	width: 40px;
 	height: 16px;
 	text-align: right;
 	color: #999;
@@ -252,7 +253,7 @@
 	border: 1px solid #ddd;
 	background: url(../images/person.png) no-repeat 4px center;
 }
-.g-courseList .m-courseList .courseList .course .price{
+.g-courseList .m-courseList .courseListUl .courseLi .price{
 	color: #ff3f00;
 	line-height: 30px;
 	padding: 0 10px 0 4px;
