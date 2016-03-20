@@ -1,21 +1,90 @@
 @charset "utf-8";
 /* 遮罩 */
 .mask{
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
 	background: #000;
-	opacity: 0.5px;
-	z-index: 99;
+	opacity: 0.7;
+	filter: alpha(opacity=70);
+	z-index: 990;
+	/*display: none;*/
 }
+/* loginWrap登录框 */
 .loginWrap{
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	margin-top: -144px;
+	margin-left: -194px;
+	/* IE8及以下 不支持transform: translate(-50%,-50%); */
 	width: 295px;
 	height: 218px;
 	z-index: 999;
 	padding: 30px 52px 40px 40px;
+	background: #fff;
+	
+	display: none;
+}
+.loginWrap .loginClose{
+	position: absolute;
+	top: 10px;
+	right: 8px;
+	width: 10px;
+	height: 10px;
+	background: url(../images/loginClose.jpg) no-repeat;
+	cursor: pointer;
 }
 .loginWrap h4{
-	/*width: 387px;*/
-	/*height: 288px;*/
 	font-size: 18px;
 	color: #444;
+	font-weight: bold;
+}
+.loginWrap .username,.loginWrap .password{
+	width: 293px;
+	height: 43px;
+	margin-top: 20px;
+	border: 1px solid #dfdfdf;
+	box-shadow: inset 2px 2px 2px #f1f1f1;
+}
+.loginWrap .password{
+	margin-top: 15px;
+}
+.loginWrap .submit{
+	width: 293px;
+	height: 46px;
+	margin-top: 29px;
+	background: #179b33;
+	box-shadow: 2px 2px 2px #d5e3da;
+	cursor: pointer;
+	line-height: 46px;
+	text-align: center;
+	font-size: 16px;
+	color: #fff;
+}
+.videoWin{
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	margin-top: -475px;
+	margin-left: -338px;
+	width: 881px;
+	height: 616px;
+	background: #fff;
+	padding: 29px 30px 40px 30px;
+	z-index: 999;
+	/*display: none;*/
+}
+.videoWin .videoWinClose{
+	position: absolute;
+	top: 13px;
+	right: 12px;
+	width: 10px;
+	height: 10px;
+	background: url(../images/loginClose.jpg) no-repeat;
+	cursor: pointer;
 }
 /* topWrap */
 .topWrap{
