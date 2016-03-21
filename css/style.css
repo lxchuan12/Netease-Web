@@ -10,22 +10,22 @@
 	opacity: 0.7;
 	filter: alpha(opacity=70);
 	z-index: 990;
-	/*display: none;*/
+	display: none;
 }
 /* loginWrap登录框 */
 .loginWrap{
 	position: fixed;
 	left: 50%;
 	top: 50%;
-	margin-top: -144px;
 	margin-left: -194px;
-	/* IE8及以下 不支持transform: translate(-50%,-50%); */
+	margin-top: -144px;
+	/* IE8及以下 不支持transform */
+	/* transform: translate(-50%,-50%); */
 	width: 295px;
 	height: 218px;
 	z-index: 999;
 	padding: 30px 52px 40px 40px;
 	background: #fff;
-	
 	display: none;
 }
 .loginWrap .loginClose{
@@ -34,7 +34,7 @@
 	right: 8px;
 	width: 10px;
 	height: 10px;
-	background: url(../images/loginClose.jpg) no-repeat;
+	background: url(../img/loginClose.jpg) no-repeat;
 	cursor: pointer;
 }
 .loginWrap h4{
@@ -64,18 +64,21 @@
 	font-size: 16px;
 	color: #fff;
 }
+/* 视频弹窗 */
 .videoWin{
 	position: fixed;
 	left: 50%;
 	top: 50%;
-	margin-top: -475px;
-	margin-left: -338px;
-	width: 881px;
-	height: 616px;
+	margin-left: -475px;
+	margin-top: -338px;
+	/* IE8及以下 不支持transform */
+	/*transform: translate(-50%,-50%); */
+	width: 890px;
+	height: 607px;
 	background: #fff;
 	padding: 29px 30px 40px 30px;
 	z-index: 999;
-	/*display: none;*/
+	display: none;
 }
 .videoWin .videoWinClose{
 	position: absolute;
@@ -83,27 +86,37 @@
 	right: 12px;
 	width: 10px;
 	height: 10px;
-	background: url(../images/loginClose.jpg) no-repeat;
+	background: url(../img/loginClose.jpg) no-repeat;
 	cursor: pointer;
 }
-/* topWrap */
-.topWrap{
+.videoWin h4{
+	font-size: 18px;
+	color: #444;
+	margin-bottom: 22px;
+}
+.videoWin video{
+	width: 889px;
+	height: 567px;
+	background: #CCC;
+}
+/* g-msg顶部消息 */
+.g-msg{
 	width: 100%;
 	background: #f3f3f3;
 }
-.topWrap .m-msg{
+.g-msg .m-msg{
 	margin: 0 auto;
 	width: 1206px;
 	height: 36px;
 	line-height: 36px;
 }
-.topWrap .m-msg .close{
+.g-msg .m-msg .close{
 	cursor:pointer;
 }
-.topWrap .m-msg .study,.topWrap .m-msg .close{
+.g-msg .m-msg .study,.g-msg .m-msg .close{
 	color: #333;
 }
-.topWrap .m-msg .study a{
+.g-msg .m-msg .study a{
 	color: #21a557;
 }
 /* m-nav */
@@ -119,7 +132,7 @@
 	padding: 30px 31px 37px 1px;
 	color: #333;
 	font:22px/1 "Hiragino Sans GB","Microsoft YaHei";
-	background: url(../images/edu.png) no-repeat left 31px;
+	background: url(../img/edu.png) no-repeat left 31px;
 }
 .m-nav .fans{
 	padding: 31px 0 37px 0;
@@ -127,11 +140,13 @@
 	height: 21px;
 }
 .m-nav .fans .focus{
-	font-size: 16px;
 	display: inline-block;
+	margin-right: 14px;
 	width: 54px;
 	height: 21px;
-	margin-right: 14px;
+	text-align: center;
+	line-height: 21px;
+	font-size: 12px;
 	color: #fff;
 	background: #21a557;
 	border-radius:2px; 
@@ -168,10 +183,10 @@
 .m-nav .link .search{
 	width: 18px;
 	height: 18px;
-	background: url(../images/search.png) no-repeat right 0;
+	background: url(../img/search.png) no-repeat right 0;
 }
 .m-nav .link .search:hover{
-	background: url(../images/search.png) no-repeat right -19px;
+	background: url(../img/search.png) no-repeat right -19px;
 }
 /* banner */
 .m-banner{
@@ -339,7 +354,7 @@
 	color: #999;
 	border-radius: 2px;
 	border: 1px solid #ddd;
-	background: url(../images/person.png) no-repeat 4px center;
+	background: url(../img/person.png) no-repeat 4px center;
 }
 .g-courseList .m-courseList .courseListUl .courseLi .price{
 	color: #ff3f00;
@@ -462,7 +477,7 @@
 	overflow: hidden;
 }
 .g-courseList .m-side .hotRank .hotRankUl .hotRankLi .hotRankInfo span{
-	background: url(../images/person.png) no-repeat left center;
+	background: url(../img/person.png) no-repeat left center;
 	color: #999;
 	width: 60px;
 	text-align: right;
@@ -510,7 +525,7 @@
 	height: 101px;
 }
 .g-footer .m-footer .about .weibo{
-	background: url(../images/weibo.png) no-repeat right center;
+	background: url(../img/weibo.png) no-repeat right center;
 }
 .g-footer .m-footer .more{
 	padding: 81px 207px 109px 73px;
