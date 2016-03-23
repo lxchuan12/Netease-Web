@@ -4,7 +4,7 @@ var $ = (function(){
 		return document.getElementById(id);
 	}
 	// 通过className获取节点
-    function getElementsByClassName(element, names) {
+    function getEleByClass(element, names) {
 	    if (element.getElementsByClassName) { //特性侦测
 	      return element.getElementsByClassName(names);
 	    } else {
@@ -49,7 +49,7 @@ var $ = (function(){
 	    }
 	}
 	// 运动相关
-	function startMove(obj, json, fnEnd) {
+	function animateMove(obj, json, fnEnd) {
 	    function move() {
 	        var bStop = true; //假设：所有值都已经到了
 	        for (var attr in json) {
@@ -80,9 +80,37 @@ var $ = (function(){
 	    clearInterval(obj.timer);
 	    obj.timer = setInterval(move, 30);
 	}
+
+	function textContent(obj){
+		if(obj.textContent){
+			return obj.textContent;
+		}else{
+			obj.innerText;
+		}
+	}
+
+
+	function trim(str){
+		return str.replace(/^\s+|\s+$/g,'');
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
 	return {
-		getEleById 				: getEleById,
-		getElementsByClassName	: getElementsByClassName,
+		getEleById 			: getEleById,
+		getEleByClass		: getEleByClass,
+		bindEvent			: bindEvent,
+		animateMove			: animateMove,
 	};
 
 

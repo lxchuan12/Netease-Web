@@ -1,6 +1,6 @@
 @charset "utf-8";
 /* 遮罩 */
-.mask{
+#mask{
 	position: fixed;
 	left: 0;
 	right: 0;
@@ -139,7 +139,7 @@
 	width:115px;
 	height: 21px;
 }
-.m-nav .fans .focus{
+.m-nav .fans #focus{
 	display: inline-block;
 	margin-right: 14px;
 	width: 54px;
@@ -152,7 +152,7 @@
 	border-radius:2px; 
 	cursor: pointer;
 }
-.m-nav .fans .focus:hover{
+.m-nav .fans #focus:hover{
 	background: #2fb556;
 }
 .m-nav .fans span{
