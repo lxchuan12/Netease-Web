@@ -1,9 +1,16 @@
 var $ = (function(){
-	// 通过id获取节点
+	/**
+	 * [getEleById 通过id获取元素]
+	 * @param  {[type]} id [id]
+	 */
 	function getEleById(id){
 		return document.getElementById(id);
 	}
-	// 通过className获取节点
+	/**
+	 * 通过class获取元素
+	 * @param  {[type]} element [元素节点]
+	 * @param  {[type]} names   [class样式]
+	 */
     function getEleByClass(element, names) {
 	    if (element.getElementsByClassName) { //特性侦测
 	      return element.getElementsByClassName(names);
@@ -30,7 +37,12 @@ var $ = (function(){
 	      return result;
 	  	}
 	}
-	// 事件绑定
+	/**
+	 * [bindEvent 事件绑定]
+	 * @param  {[type]}   obj    [元素节点]
+	 * @param  {[type]}   evname [时间名称]
+	 * @param  {Function} fn     [回调函数]
+	 */
 	function bindEvent(obj, evname, fn) {
 		if (obj.addEventListener) {
 		  obj.addEventListener(evname, fn, false);
@@ -40,7 +52,12 @@ var $ = (function(){
 		  });
 		}
 	}
-	// 获取样式
+	/**
+	 * 获取样式
+	 * @param  {[type]} obj  [元素节点]
+	 * @param  {[type]} name [样式]
+	 * @return {[type]}      [description]
+	 */
 	function getStyle(obj, name) {
 	    if (obj.currentStyle) {
 	        return obj.currentStyle[name];
@@ -48,7 +65,13 @@ var $ = (function(){
 	        return getComputedStyle(obj, false)[name];
 	    }
 	}
-	// 运动相关
+	/**
+	 * 运动
+	 * @param  {[type]} obj   [元素]
+	 * @param  {[type]} json  [样式json]
+	 * @param  {[type]} fnEnd [回调函数]
+	 * @return {[type]}       [description]
+	 */
 	function animateMove(obj, json, fnEnd) {
 	    function move() {
 	        var bStop = true; //假设：所有值都已经到了
@@ -80,7 +103,10 @@ var $ = (function(){
 	    clearInterval(obj.timer);
 	    obj.timer = setInterval(move, 30);
 	}
-
+	/**
+	 * [textContent 节点内容]
+	 * @param  {[type]} obj [元素节点]
+	 */
 	function textContent(obj){
 		if(obj.textContent){
 			return obj.textContent;
@@ -89,7 +115,59 @@ var $ = (function(){
 		}
 	}
 
+	/**
+	 * 获取cookie
+	 * @return {[object]} [cookie]
+	 */
+	function getCookie(){
+		var cookie = {};
+		var all =document.cookie;
+		if(!all) return cookie;
+		var list = all.split('; ');
+		for(var i=0,len = list.length;i<len;i++){
+			var item = list[i];
+			var p = item.indexOf('=');
+			var name = item.substring(0,p);
+			name = decodeURIComponent(name);
+			var value = item.substring(p+1);
+			value = decodeURIComponent(value);
+			cookie[name] = value;
+			return cookie;
 
+		}
+
+	}
+	/**
+	 * [setCookie 设置cookie]
+	 * @param {[type]} name    [cookie名]
+	 * @param {[type]} value   [cookie值]
+	 * @param {[type]} expires [失效时间]
+	 * @param {[type]} path    [作用路径]
+	 * @param {[type]} domain  [作用域]
+	 * @param {[type]} secure  [https协议时生效]
+	 */
+	function setCookie(name,value,expires,path,domain,secure){
+		var cookie = encodeURIComponent(name)+'='+encodeURIComponent(value);
+		if(expires instanceof Date){
+			cookie+='; expires='+expires.toGMTString();
+		}
+		if(path){
+			cookie +='; path='+path;
+		}
+		if(domain){
+			cookie +='; domain='+domain;
+		}
+		if(secure){
+			cookie += '; secure';
+		}
+		document.cookie = cookie;
+
+	};
+	/**
+	 * [trim 去除空格]
+	 * @param  {[type]} str [字符串]
+	 * @return {[type]}     [description]
+	 */
 	function trim(str){
 		return str.replace(/^\s+|\s+$/g,'');
 	}
@@ -111,6 +189,9 @@ var $ = (function(){
 		getEleByClass		: getEleByClass,
 		bindEvent			: bindEvent,
 		animateMove			: animateMove,
+		getCookie			: getCookie,
+		setCookie			: setCookie,
+		trim				: trim,
 	};
 
 
