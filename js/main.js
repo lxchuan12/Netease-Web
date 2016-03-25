@@ -5,20 +5,60 @@
 	var msg=$.getEleById('g-msg');
 	$.bindEvent(
 		noRmd,'click',function(){
-
 			msg.style.display='none';
+		}
+	);
+
+	//登录弹窗
+	var mask=$.getEleById('mask');
+	var loginWrap=$.getEleById('loginWrap');
+	var focus=$.getEleById('focus');
+	var loginClose=$.getEleById('loginClose');
+	//显示登录弹窗
+	$.bindEvent(
+		focus,'click',function(){
+			mask.style.display='block';
+			loginWrap.style.display='block';
+		}
+	);
+	//隐藏登录弹窗
+	$.bindEvent(
+		loginClose,'click',function(){
+			loginWrap.style.display='none';
+			mask.style.display='none';
 
 		}
 	);
-	var mask=$.getEleById('g-msg');
-	var loginWrap=$.getEleById('loginWrap');
-	var focus=$.getEleById('focus');
-	
+	// 遮罩点击隐藏
 	$.bindEvent(
-		focus,'click',function(){
-			mask.style.display='display';
-			loginWrap.style.display='display';
-
+		mask,'click',function(){
+			loginWrap.style.display='none';
+			mask.style.display='none';
+		}
+	);
+	//视频弹窗
+	var videoImg=$.getEleById('videoImg');
+	var videoWin=$.getEleById('videoWin');
+	var videoWinClose=$.getEleById('videoWinClose');
+	//显示视频弹窗
+	$.bindEvent(
+		videoImg,'click',function(){
+			mask.style.display='block';
+			videoWin.style.display='block';
+		}
+	);
+	//隐藏视频弹窗
+	$.bindEvent(
+		videoWinClose,'click',function(){
+			videoWin.style.display='none';
+			mask.style.display='none';
+		}
+	);
+	// 遮罩点击隐藏
+	$.bindEvent(
+		mask,'click',function(){
+			videoWin.style.display='none';
+			mask.style.display='none';
 		}
 	);
 

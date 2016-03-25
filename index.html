@@ -9,8 +9,8 @@
 <body>
 	<!-- mask&&loginWrap -->
 		<div id="mask"></div>
-		<div class="loginWrap" id="loginWrap">
-			<div class="loginClose"></div>
+		<div id="loginWrap">
+			<div id="loginClose"></div>
 			<h4>登录网易云课堂</h4>
 			<form action="" method="post">
 				<input type="text" name="username" placeholder="账号" class="username">
@@ -20,10 +20,12 @@
 		</div>
 	<!-- /mask&&loginWrap -->
 	<!-- videoWin 视频弹窗 -->
-	<div class="videoWin">
-		<div class="videoWinClose"></div>
+	<div id="videoWin">
+		<div id="videoWinClose"></div>
 		<h4>请观看下面的视频</h4>
-		<video src=""></video>
+		<video  id="video" src="http://mov.bn.netease.com/open-movie/nos/mp4/2014/12/30/SADQ86F5S_shd.mp4" controls  width="889" height="567" type="video/mp4">
+				Your browser does not support HTML5 video.
+			</video>
 	</div>
 	<!-- /videoWin 视频弹窗 -->
 	<div class="g-msg" id="g-msg">
@@ -266,7 +268,7 @@
 					<h3>机构介绍</h3>
 					<div class="video">
 						<p>观看下面的视频来了解吧：</p>
-						<img src="img/video.jpg" alt="网易教育产品部视频">
+						<img id="videoImg" src="img/video.jpg" alt="网易教育产品部视频">
 					</div>
 				</div>
 				<div class="hotRank">

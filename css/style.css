@@ -13,7 +13,7 @@
 	display: none;
 }
 /* loginWrap登录框 */
-.loginWrap{
+#loginWrap{
 	position: fixed;
 	left: 50%;
 	top: 50%;
@@ -28,7 +28,7 @@
 	background: #fff;
 	display: none;
 }
-.loginWrap .loginClose{
+#loginWrap #loginClose{
 	position: absolute;
 	top: 10px;
 	right: 8px;
@@ -37,22 +37,22 @@
 	background: url(../img/loginClose.jpg) no-repeat;
 	cursor: pointer;
 }
-.loginWrap h4{
+#loginWrap h4{
 	font-size: 18px;
 	color: #444;
 	font-weight: bold;
 }
-.loginWrap .username,.loginWrap .password{
+#loginWrap .username,#loginWrap .password{
 	width: 293px;
 	height: 43px;
 	margin-top: 20px;
 	border: 1px solid #dfdfdf;
 	box-shadow: inset 2px 2px 2px #f1f1f1;
 }
-.loginWrap .password{
+#loginWrap .password{
 	margin-top: 15px;
 }
-.loginWrap .submit{
+#loginWrap .submit{
 	width: 293px;
 	height: 46px;
 	margin-top: 29px;
@@ -65,7 +65,7 @@
 	color: #fff;
 }
 /* 视频弹窗 */
-.videoWin{
+#videoWin{
 	position: fixed;
 	left: 50%;
 	top: 50%;
@@ -80,7 +80,7 @@
 	z-index: 999;
 	display: none;
 }
-.videoWin .videoWinClose{
+#videoWin #videoWinClose{
 	position: absolute;
 	top: 13px;
 	right: 12px;
@@ -89,16 +89,15 @@
 	background: url(../img/loginClose.jpg) no-repeat;
 	cursor: pointer;
 }
-.videoWin h4{
+#videoWin h4{
 	font-size: 18px;
 	color: #444;
 	margin-bottom: 22px;
 }
-.videoWin video{
+/*#videoWin #video{
 	width: 889px;
 	height: 567px;
-	background: #CCC;
-}
+}*/
 /* g-msg顶部消息 */
 .g-msg{
 	width: 100%;

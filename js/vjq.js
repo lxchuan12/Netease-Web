@@ -7,7 +7,7 @@ var $ = (function(){
 		return document.getElementById(id);
 	}
 	/**
-	 * 通过class获取元素
+	 * 通过class获取元素、兼容IE6,7,8
 	 * @param  {[type]} element [元素节点]
 	 * @param  {[type]} names   [class样式]
 	 */
@@ -46,7 +46,7 @@ var $ = (function(){
 	function bindEvent(obj, evname, fn) {
 		if (obj.addEventListener) {
 		  obj.addEventListener(evname, fn, false);
-		} else {
+		} else{
 		  obj.attachEvent('on' + evname, function() {
 		    fn.call(obj);
 		  });
@@ -171,7 +171,64 @@ var $ = (function(){
 	function trim(str){
 		return str.replace(/^\s+|\s+$/g,'');
 	}
+	/**
+	 * [preventDefault 阻止默认事件]
+	 * @param  {[type]} event [事件对象]
+	 * @return {[type]}       [description]
+	 */
+	function preventDefault(event){
+		if(event.preventDefault){
+			event.preventDefault;
+		}else{
+			event.returnValue=false;
+		}
+	}
+	/**
+	 * [ajax 异步加载]
+	 * @param  {[type]}   url      [地址]
+	 * @param  {[type]}   options  [description]
+	 * @param  {Function} callback [回调函数]
+	 * @return {[type]}            [description]
+	 */
+	function ajax(url,options,callback){
+	    var createXHR=function(url){
+	        var xhr = new XMLHttpRequest();
+	        if('withCredentials' in xhr){
+	        	xhr.open('GET', url, true);
+	        }else if(typeof XDomainRequest != 'undefined'){
+	        	var xhr = new XDomainRequest();
+	        	xhr.open('GET', url);
+	        }else{
+	        	xhr = null;
+	        }
+	        return xhr;
+	    };
 
+	    var serialize=function(data){
+	        if(!data) return '';
+	        var pairs = [];
+	        for(var name in data){
+	            if(!data.hasOwnProperty(name)) continue;
+	            if(typeof data[name] === 'function') continue;
+	            var value=data[name].toString();
+	            name = encodeURIComponent(name);
+	            value = encodeURIComponent(value);
+	            pairs.push(name +'='+ value);
+	        }
+	        return pairs.join('&');
+	    };
+	    var requestURL = url + '?' +serialize(options);
+	    var xhr=createXHR(requestURL);
+	   	if(xhr){
+	   		xhr.onload=function(){
+	             if(callback) 
+	             	callback(xhr.responseText);       
+	    	};
+	     xhr.send(null);
+	   	}
+
+	   
+    }
 
 
 
@@ -192,6 +249,9 @@ var $ = (function(){
 		getCookie			: getCookie,
 		setCookie			: setCookie,
 		trim				: trim,
+		preventDefault		: preventDefault,
+		ajax				: ajax
+
 	};
 
 
