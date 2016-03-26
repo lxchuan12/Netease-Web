@@ -5,9 +5,15 @@
 	var msg=$.getEleById('g-msg');
 	$.bindEvent(
 		noRmd,'click',function(){
+			$.setCookie('rmdCookie', 1);
 			msg.style.display='none';
 		}
 	);
+	//有bug,待解决
+	console.log(cookie.rmdCookie);
+	if(cookie.rmdCookie){
+		msg.style.display='none';
+	}
 
 	//登录弹窗
 	var mask=$.getEleById('mask');
@@ -57,10 +63,16 @@
 	// 遮罩点击隐藏
 	$.bindEvent(
 		mask,'click',function(){
+			if(video.pause){
+				video.pause();
+			};
 			videoWin.style.display='none';
 			mask.style.display='none';
 		}
 	);
+
+
+
 
 
 
