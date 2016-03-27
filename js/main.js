@@ -10,10 +10,10 @@
 		}
 	);
 	//有bug,待解决
-	console.log(cookie.rmdCookie);
-	if(cookie.rmdCookie){
-		msg.style.display='none';
-	}
+	// console.log(cookie.rmdCookie);
+	// if(cookie.rmdCookie){
+	// 	msg.style.display='none';
+	// }
 
 	//登录弹窗
 	var mask=$.getEleById('mask');
@@ -26,6 +26,36 @@
 			mask.style.display='block';
 			loginWrap.style.display='block';
 		}
+	);
+	// 登录验证
+	var login_form = document.forms.login_form;
+	var submit = $.getEleById(submit);
+	$.bindEvent(
+		submit,'click',function(){
+			
+		var userName = loginForm['userName'].value;
+		var password = loginForm['password'].value;
+		userName = $.trim(userName);
+		password = $.trim(password);
+		var reqData = null;
+		if(userName === '' || password === '') return false;
+		reqData = {
+			userName : md5(userName),
+			password : md5(password)
+		};
+		$.get('http://study.163.com/webDev/login.htm', reqData,function(data){
+			if(Number(data) === 1){
+				$.setCookie('loginSuc', 1);
+				follow();
+				closeLogin();
+			}else{
+				alert('用户名或密码有误')
+				closeLogin();
+			}
+		});
+		}
+
+
 	);
 	//隐藏登录弹窗
 	$.bindEvent(
@@ -60,7 +90,7 @@
 			mask.style.display='none';
 		}
 	);
-	// 遮罩点击隐藏
+	// 遮罩点击隐藏，视频暂停
 	$.bindEvent(
 		mask,'click',function(){
 			if(video.pause){
@@ -70,6 +100,8 @@
 			mask.style.display='none';
 		}
 	);
+
+
 
 
 
