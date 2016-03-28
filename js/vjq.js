@@ -40,7 +40,7 @@ var $ = (function(){
 	/**
 	 * [bindEvent 事件绑定]
 	 * @param  {[type]}   obj    [元素节点]
-	 * @param  {[type]}   evname [时间名称]
+	 * @param  {[type]}   evname [事件名称]
 	 * @param  {Function} fn     [回调函数]
 	 */
 	function bindEvent(obj, evname, fn) {
@@ -70,7 +70,6 @@ var $ = (function(){
 	 * @param  {[type]} obj   [元素]
 	 * @param  {[type]} json  [样式json]
 	 * @param  {[type]} fnEnd [回调函数]
-	 * @return {[type]}       [description]
 	 */
 	function animateMove(obj, json, fnEnd) {
 	    function move() {
@@ -146,22 +145,21 @@ var $ = (function(){
 	 * @param {[type]} domain  [作用域]
 	 * @param {[type]} secure  [https协议时生效]
 	 */
-	function setCookie(name,value,expires,path,domain,secure){
-		var cookie = encodeURIComponent(name)+'='+encodeURIComponent(value);
-		if(expires instanceof Date){
-			cookie+='; expires='+expires.toGMTString();
+	function setCookie(name, value, expires, path, domain, secure){
+		var cookie = encodeURIComponent(name) + '=' + encodeURIComponent(value);
+		if(expires instanceof Date) {
+			cookie += '; expires=' + expires.toGMTString();
 		}
 		if(path){
-			cookie +='; path='+path;
+			cookie += '; path=' + path;
 		}
 		if(domain){
-			cookie +='; domain='+domain;
+			cookie += '; domain=' + domain;
 		}
 		if(secure){
 			cookie += '; secure';
 		}
 		document.cookie = cookie;
-
 	};
 	/**
 	 * [trim 去除空格]
@@ -186,9 +184,8 @@ var $ = (function(){
 	/**
 	 * [ajax 异步加载]
 	 * @param  {[type]}   url      [地址]
-	 * @param  {[type]}   options  [description]
+	 * @param  {[type]}   options  [选项]
 	 * @param  {Function} callback [回调函数]
-	 * @return {[type]}            [description]
 	 */
 	function ajax(url,options,callback){
 	    var createXHR=function(url){

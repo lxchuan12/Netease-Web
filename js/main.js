@@ -29,34 +29,34 @@
 	);
 	// 登录验证
 	var login_form = document.forms.login_form;
-	var submit = $.getEleById(submit);
-	$.bindEvent(
-		submit,'click',function(){
-			
+	var submit = $.getEleById('submit');
+	// 登录动作
+	function do_login(){
 		var userName = loginForm['userName'].value;
 		var password = loginForm['password'].value;
 		userName = $.trim(userName);
 		password = $.trim(password);
 		var reqData = null;
 		if(userName === '' || password === '') return false;
-		reqData = {
+		requestData = {
 			userName : md5(userName),
 			password : md5(password)
 		};
-		$.get('http://study.163.com/webDev/login.htm', reqData,function(data){
+		console.log(requestData);
+		$.ajax('http://study.163.com/webDev/login.htm', requestData,function(data){
 			if(Number(data) === 1){
 				$.setCookie('loginSuc', 1);
-				follow();
-				closeLogin();
+				console.log('11');
+				// follow();
+				// closeLogin();
 			}else{
-				alert('用户名或密码有误')
-				closeLogin();
+				alert('用户名或密码有误');
+				// closeLogin();
 			}
 		});
-		}
+	}
+	$.bindEvent(submit,'click',do_login);
 
-
-	);
 	//隐藏登录弹窗
 	$.bindEvent(
 		loginClose,'click',function(){
