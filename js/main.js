@@ -171,58 +171,20 @@
 	var hotRankUlList = hotRankUl.getElementsByTagName('li');
 	// var hotRankUl2 = $.getEleById('hotRankUl2');
 	var hotRankLi = null;
-	var hotRankUlMove = function(data){
+
+	function hotRankUlMove(data){
 		hotRankLi = JSON.parse(data);
 		var html = '';
 		var html2 = '';
-		//最热排行向上滚动动画
-		function listMove(){
-			// var from_1 ,from_2, to_1, to_2;
-			// from_1= parseInt(hotRankUl.style.top);
-			// if(from_1 <= -701) from_1 = 701;
-			// to_1 = from_1 - 70;
-			// from_2 = parseInt(hotRankUl2.style.top);
-			// if(from_2 <= -701) from_2 = 701;
-			// to_2 = from_2 - 70;
-			// $.animateMove(hotRankUl, {top:30});
-			// // $.animateMove(hotRankUl2, 'top', from_2, to_2, 300);
-
-		var oneSize=hotRankUlList[0].offsetHeight+20;
-
-		var iNum=20;
-		var bBtn=true;
-		function getHeight(){
-			hotRankUl.style.Height=(hotRankUlList.length-1)*oneSize+'px';
-		};
-		getHeight();
-		function moveList(){
-			if(bBtn){
-				bBtn=false;
-				for (var i = 0; i < iNum; i++) {
-					var oLi=hotRankUlList[i].cloneNode(true);
-					hotRankUl.appendChild(oLi);
-					getHeight();
-				};
-				$.animateMove(hotRankUl,{top:-iNum*oneSize},function(){
-					
-					for (var i = 0; i < iNum; i++) {
-						hotRankUl.removeChild(hotRankUlList[0]);
-						hotRankUl.style.top=0;
-					};
-					bBtn=true;
-				});
-
-			}
-		}
-		moveList();
-		};
+		//每次向上移动一个，无缝滚动
+		
 		//生成html
 		for(var i = 0; i < 20; i++){
 			var item = hotRankLi[i];
 			var str = '<li class="hotRankLi clearfix">'
-					+'			<img src="'+item.smallPhotoUrl+'" alt="背景">'
-					+'			<div class="hotRankInfo"><a href="#">'+item.name+'</a>'
-					+'			<p class="person"><span></span>'+item.learnerCount+'</p></div>'
+					+'		<img src="'+item.smallPhotoUrl+'" alt="背景">'
+					+'		<div class="hotRankInfo"><a href="#">'+item.name+'</a>'
+					+'		<p class="person"><span></span>'+item.learnerCount+'</p></div>'
 					+'</li>';
 			// if(i < 10){
 			// 	html += str;
@@ -234,16 +196,46 @@
 		
 		hotRankUl.innerHTML = html;
 		// hotRankUl2.innerHTML = html2;
-		var listTimer = setInterval(listMove,50);
-		$.bindEvent(hotRank, 'mouseover', function(e){
-			clearInterval(listTimer);
-		});
-		$.bindEvent(hotRank, 'mouseout', function(e){
-			listTimer = setInterval(listMove,50);
-		});
+		
 	};
 	$.ajax('http://study.163.com/webDev/hotcouresByCategory.htm',{}, hotRankUlMove);
+	function listMove(){
+		var oneSize=hotRankUlList[0].offsetHeight+20;
+		var iNum=2;
+		var bBtn=true;
+		function getHeight(){
+			hotRankUl.style.height=(hotRankUlList.length-1)*oneSize+'px';
+		};
+		getHeight();
+		function moveList(){
+			if(bBtn){
+				bBtn=false;
+				for (var i = 0; i < iNum; i++) {
+					var oLi=hotRankUlList[i].cloneNode(true);
+					hotRankUl.appendChild(oLi);
+					getHeight();
+				};
+				$.animateMove(hotRankUl,{top:-oneSize},function(){
+					
+					for (var i = 0; i < iNum; i++) {
+						hotRankUl.removeChild(hotRankUlList[0]);
+						hotRankUl.style.top=-70;
+						hotRankUl.style.height=-70;
+					};
+					bBtn=true;
+				});
 
+			}
+		}
+		moveList();
+	};
+	var listTimer = setInterval(listMove,5000);
+	$.bindEvent(hotRank, 'mouseover', function(e){
+		clearInterval(listTimer);
+	});
+	$.bindEvent(hotRank, 'mouseout', function(e){
+		listTimer = setInterval(listMove,5000);
+	});
 
 
 

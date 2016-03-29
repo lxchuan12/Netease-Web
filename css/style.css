@@ -491,17 +491,24 @@
 	width: 223px;
 	height:778px;
 	box-shadow: 1px 2px 2px #d4d3d3;
-	
-
 }
-.g-courseList .m-side .hotRank .hotRankUl{
-	position: absolute;
-	top: 56px;
+.g-courseList .m-side .hotRankWrap{
+	position: relative;
+	background: #fff;
 	margin: 20px 20px 0 20px;
 	background: #fff;
 	width: 183px;
-	height:701px;
+	height:700px;
 	overflow: hidden;
+}
+.g-courseList .m-side .hotRank .hotRankUl{
+	position: absolute;
+	top: 0;
+	/*margin: 20px 20px 0 20px;*/
+	background: #fff;
+	width: 183px;
+	height:700px;
+	
 }
 .g-courseList .m-side .hotRank .hotRankUl .hotRankLi{
 	background: #fff;

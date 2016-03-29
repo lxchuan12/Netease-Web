@@ -217,8 +217,9 @@ var $ = (function(){
 	    var xhr=createXHR(requestURL);
 	   	if(xhr){
 	   		xhr.onload=function(){
-	             if(callback) 
-	             	callback(xhr.responseText);
+	             if(callback){
+	             	callback(xhr.responseText)
+	             };
 			};
 	     xhr.send(null);
 	   	}
