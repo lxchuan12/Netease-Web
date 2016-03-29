@@ -12,10 +12,10 @@
 		<div id="loginWrap">
 			<div id="loginClose"></div>
 			<h4>登录网易云课堂</h4>
-			<form action="" method="post" name="login_form">
-				<input type="text" name="username" placeholder="账号" class="username">
+			<form name="login_form">
+				<input type="text" name="userName" placeholder="账号" class="userName">
 				<input type="password" name="password" placeholder="密码" class="password">
-				<input type="submit" value="登录" class="submit" id="submit">
+				<input type="button" value="登录" class="submit" id="submit">
 			</form>
 		</div>
 	<!-- /mask&&loginWrap -->
@@ -42,10 +42,14 @@
 	<div class="m-nav clearfix">
 			<div class="logo f-fl"></div>
 			<h1 class="f-fl">网易教育产品部</h1>
-			<div class="fans f-fl">
+			<div class="fans f-fl" id="fansWrap">
 				<a href="#" id="focus">+ 关注</a>
-				<span>粉丝 45</span>
+				<div class="followWrap" id="followWrap">
+					<span class="isfollow">已关注</span><span class="divider"></span><span class="unfollow" id="unfollow">取消</span>
+				</div>
+				<p>粉丝 <span id="fansNum">45</span></p>
 			</div>
+			
 			<div class="link f-fr">
 				<a href="http://open.163.com/" target="_blank" class="a1">网易公开课</a>
 				<a href="http://study.163.com/" target="_blank" class="a2">云课堂</a>
@@ -54,11 +58,11 @@
 			</div>
 	</div>
 	<div class="m-banner" id="m-banner">
-		<div class="banner">
-		<a href="http://open.163.com/" target="_blank"><img src="img/banner1.jpg" alt="网易公开课"></a>
-		<!-- <a href="http://open.163.com/" target="_blank"><img src="img/banner2.jpg" alt="元课堂"></a>
-		<a href="http://open.163.com/" target="_blank"><img src="img/banner3.jpg" alt="中国大学MOOC"></a> -->
-		</div>
+		<ul id="bannerUl">
+		<li class="z-crt"><a href="http://open.163.com/" target="_blank"><img src="img/banner1.jpg" alt="网易公开课"></a></li>
+		<li><a href="http://open.163.com/" target="_blank"><img src="img/banner2.jpg" alt="元课堂"></a></li>
+		<li><a href="http://open.163.com/" target="_blank"><img src="img/banner3.jpg" alt="中国大学MOOC"></a></li>
+		</ul>
 		<div id="pointer">
 			<i class="z-crt"></i>
 			<i></i>
@@ -92,11 +96,11 @@
 		</div>
 	</div>
 	<div class="g-workPlace">
-		<img src="img/workPlace2.jpg" alt="工作环境">
-		<img src="img/workPlace2.jpg" alt="工作环境">
-		<img src="img/workPlace2.jpg" alt="工作环境">
-		<img src="img/workPlace2.jpg" alt="工作环境">
-		<img src="img/workPlace2.jpg" alt="工作环境">
+		<img src="img/workPlace6.jpg" alt="工作环境">
+		<img src="img/workPlace6.jpg" alt="工作环境">
+		<img src="img/workPlace6.jpg" alt="工作环境">
+		<img src="img/workPlace6.jpg" alt="工作环境">
+		<img src="img/workPlace6.jpg" alt="工作环境">
 	</div>
 	<!-- g-courseListWrap -->
 	<div class="g-courseListWrap">
@@ -139,15 +143,16 @@
 						<img id="videoImg" src="img/video.jpg" alt="网易教育产品部视频">
 					</div>
 				</div>
-				<div class="hotRank">
+				<div class="hotRank" id="hotRank">
 					<h3>最热排行</h3>
-					<ul class="hotRankUl">
-						<li class="hotRankLi clearfix">
+					<ul class="hotRankUl" id="hotRankUl">
+						<!-- <li class="hotRankLi clearfix">
 						<img src="img/hotRank.png" alt="背景">
 						<div class="hotRankInfo"><a href="#">舞曲揭秘音乐揭秘舞曲揭秘音乐揭秘舞曲揭秘音乐揭秘舞曲揭秘音乐揭秘</a>
 						<p class="person"><span></span>21567</p></div>
-						</li>
+						</li> -->
 					</ul>
+					<!-- <ul class="hotRankUl" id="hotRankUl2"></ul> -->
 				</div>
 			</div>
 			<!-- /g-courseListWrap m-side -->

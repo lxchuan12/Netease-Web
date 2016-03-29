@@ -42,7 +42,7 @@
 	color: #444;
 	font-weight: bold;
 }
-#loginWrap .username,#loginWrap .password{
+#loginWrap .userName,#loginWrap .password{
 	width: 293px;
 	height: 43px;
 	margin-top: 20px;
@@ -140,7 +140,7 @@
 }
 .m-nav .fans{
 	padding: 31px 0 37px 0;
-	width:115px;
+	/*width:115px;*/
 	height: 21px;
 }
 .m-nav .fans #focus{
@@ -159,10 +159,39 @@
 .m-nav .fans #focus:hover{
 	background: #2fb556;
 }
-.m-nav .fans span{
+.m-nav .fans p{
 	font-size: 12px;
 	color: #666;
+	display: inline-block;
 }
+.m-nav .fans .followWrap{
+	display: none;
+	/*display: inline-block;*/
+	height:20px;
+	line-height: 20px;
+	border: 1px solid #efefef;
+	border-radius: 2px;
+	background-color: #f8f8f8;
+}
+.m-nav .fans .followWrap .isfollow{
+	padding-left: 12px;
+	margin-right: 7px;
+}
+.m-nav .fans .followWrap .divider{
+	border-right: 1px solid #ccc;
+	height: 10px;
+}
+.m-nav .fans .followWrap .unfollow{
+	padding-left: 7px;
+	padding-right: 7px;
+	cursor: pointer;
+	color: #999;
+}
+.m-nav .fans .followWrap .unfollow:hover{
+	color: #21a557;
+	text-decoration: underline;
+}
+
 .m-nav .link{
 	padding:36px 16px 36px 0;
 	width:413px;
@@ -200,8 +229,17 @@
 	height: 460px;
 	overflow: hidden;
 }
-.m-banner .banner img{
+.m-banner #bannerUl{
+	position: absolute;
+}
+.m-banner #bannerUl a img{
 	height: 460px;
+}
+.m-banner #bannerUl li{
+	z-index: 0;
+}
+.m-banner #bannerUl li.z-crt{
+	z-index: 10px;
 }
 .m-banner #pointer{
 	display: inline-block;
@@ -213,7 +251,7 @@
 	display: inline-block;
 	width: 10px;
 	height: 10px;
-	border-radius: 50%;
+	border-radius:5px;
 	background: #fff;
 	cursor: pointer;
 }
@@ -447,17 +485,23 @@
 	color: #666;
 }
 .g-courseList .m-side .hotRank{
+	position: relative;
 	background: #fff;
 	margin-top: 20px;
 	width: 223px;
 	height:778px;
 	box-shadow: 1px 2px 2px #d4d3d3;
+	
+
 }
 .g-courseList .m-side .hotRank .hotRankUl{
+	position: absolute;
+	top: 56px;
 	margin: 20px 20px 0 20px;
 	background: #fff;
 	width: 183px;
 	height:701px;
+	overflow: hidden;
 }
 .g-courseList .m-side .hotRank .hotRankUl .hotRankLi{
 	background: #fff;
