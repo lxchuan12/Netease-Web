@@ -163,7 +163,29 @@
 		});
 	}
 	
+	// 课程列表
+	// Tab选项卡
+
+	var navUl=$.getEleById('navUl');
+	var navLi=navUl.getElementsByTagName('li');
+	var courseListUlWrap = $.getEleById('courseListUlWrap');
+	var courseListUl = courseListUlWrap.getElementsByTagName('ul');
 	
+	for( var i=0; i<navLi.length; i++ ){
+		
+		navLi[i].index = i;
+		
+		$.bindEvent(navLi[i],'click',function (){
+			for(var i=0;i<navLi.length;i++){
+				navLi[i].className='';
+				courseListUl[i].style.display="none";
+			}
+			this.className = "z-crt";
+			courseListUl[this.index].style.display="block";
+		});
+	}
+	
+
 
 	// 最热排行
 	var hotRank = $.getEleById('hotRank');
@@ -220,7 +242,6 @@
 					for (var i = 0; i < iNum; i++) {
 						hotRankUl.removeChild(hotRankUlList[0]);
 						hotRankUl.style.top=-70;
-						hotRankUl.style.height=-70;
 					};
 					bBtn=true;
 				});

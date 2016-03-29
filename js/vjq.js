@@ -94,7 +94,7 @@ var $ = (function(){
 						obj.style[attr] = cur + speed + 'px';	
 					};
 	        };
-				if (bStop == true) { //也可以写成if(bStop)
+				if (bStop == true) {
 					clearInterval(obj.timer);			
 					if (fnEnd) fnEnd();				
 				};

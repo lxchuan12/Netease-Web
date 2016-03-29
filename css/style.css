@@ -331,30 +331,30 @@
 	height: 50px;
 	padding: 0 580px 9px 0;
 }
-.g-courseList .m-courseList .navUl .navLi{
+.g-courseList .m-courseList .navUl li{
+	float: left;
 	font-size: 20px;
 	line-height: 50px;
 	text-align: center;
 	width: 200px;
 	height: 50px;
 	box-shadow:0 1px 2px #d4d3d3;
-}
-.g-courseList .m-courseList .navUl #select{
-	background: #39a030;
-}
-.g-courseList .m-courseList .navUl #select a{
-	color: #fff;
-}
-.g-courseList .m-courseList .navUl #notSelect{
 	background: #fff;
-}
-.g-courseList .m-courseList .navUl #notSelect a{
 	color: #666;
+	cursor: pointer;
+}
+.g-courseList .m-courseList .navUl li:hover{
+	box-shadow:4px 6px 4px #d4d3d3;
+}
+.g-courseList .m-courseList .navUl li.z-crt{
+	background: #39a030;
+	color: #fff;
 }
 .g-courseList .m-courseList .courseListUl{
 	width: 980px;
 	height: 1219px;
 	padding-top: 20px;
+	display: none;
 }
 .g-courseList .m-courseList .courseListUl .courseLi{
 	margin:0 20px 20px 0;
