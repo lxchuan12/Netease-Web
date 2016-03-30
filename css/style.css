@@ -307,7 +307,24 @@
 .g-workPlace{
 	width:100%;
 	height: 220px;
+	
+	background: #f8f8f8;
+	display: table;
+	table-layout: fixed;
 	overflow: hidden;
+}
+.g-workPlace .workPlace{
+	width: 20%;
+	display: table-cell;
+	/*float: left;*/
+}
+.g-workPlace .workPlace+.workPlace{
+	margin-left: 4px;
+}
+.g-workPlace .workPlace img{
+	/*width: 100%;*/
+	width: 312px;
+	height: 220px;
 }
 
 /* g-courseListWrap */
@@ -325,6 +342,7 @@
 .g-courseList .m-courseList{
 	width: 980px;
 	height: 1350px;
+	position: relative;
 }
 .g-courseList .m-courseList .navUl{
 	width: 400px;
@@ -357,6 +375,7 @@
 	display: none;
 }
 .g-courseList .m-courseList .courseListUl .courseLi{
+	position: relative;
 	margin:0 20px 20px 0;
 	float: left;
 	width: 223px;
@@ -365,6 +384,16 @@
 	padding: 0 1px 0 1px;
 	box-shadow:0 1px 2px #e6e6e6;
 	font-size: 12px;
+	cursor: pointer;
+}
+.g-courseList .m-courseList .courseListUl .courseLi:hover{
+	box-shadow:4px 4px 4px #e6e6e6;
+}
+.g-courseList .m-courseList .courseListUl .courseLi:hover .courseDetail{
+	display: block;
+}
+.g-courseList .m-courseList .courseListUl .courseLi:hover a{
+	color: #39a030;
 }
 .g-courseList .m-courseList .courseListUl .courseLi img{
 	width: 223px;
@@ -381,6 +410,7 @@
 	white-space: nowrap;
 	overflow: hidden;
 }
+
 .g-courseList .m-courseList .courseListUl .courseLi .org{
 	padding: 0 10px 0 4px;
 	width: 209px;
@@ -390,9 +420,9 @@
 }
 .g-courseList .m-courseList .courseListUl .courseLi .peopleNum{
 	margin: 0 10px 0 4px;
-	width: 40px;
+	width: 5em;
 	height: 16px;
-	text-align: left;
+	text-align: center;
 	color: #999;
 	border-radius: 2px;
 	border: 1px solid #ddd;
@@ -409,14 +439,63 @@
 	line-height: 30px;
 	padding: 0 10px 0 4px;
 }
+/* courseDetail课程详情 */
+.g-courseList .m-courseList .courseListUl .courseLi .courseDetail{
+	display: none;
+	position: absolute;
+	left: 0; 
+	top: 0;
+	z-index: 100;
+	width: 425px;
+	box-shadow:2px 2px 2px #d6d6d6;
+	background: #fff;
+	padding: 0 1px 0 1px;
+	color: #646464;
+}
+.g-courseList .m-courseList .courseListUl .courseLi .courseDetail .pic{
+	float: left;
+	width: 223px;
+	height: 124px;
+	margin-right: 18px;
+}
+.g-courseList .m-courseList .courseListUl .courseLi .courseDetail .content{
+	overflow: hidden;
+}
+.g-courseList .m-courseList .courseListUl .courseLi .courseDetail .content h3{
+	font-size: 18px;
+	font-weight: bold;
+	margin-bottom: 20px;
+	color: #333;
+}
+.g-courseList .m-courseList .courseListUl .courseLi .courseDetail .learnCount{
+	margin-bottom: 14px;
+}
+.g-courseList .m-courseList .courseDetail .courseLi .provider{
+	margin-bottom: 8px;
+}
+.g-courseList .m-courseList .courseListUl .courseLi .courseDetail p{
+	text-indent: 2em;
+	margin: 20px 5px 20px 5px;
+	width: 427px;
+	font-size: 12px;
+	line-height: 24px;
+	white-space: pre-wrap;
+	overflow: hidden;
+	
+}
 /* 分页器g-courseList .m-courseList .pages */
 .g-courseList .m-courseList .pages{
-	width: 302px;
-	height: 20px;
-	padding: 31px 0 120px 658px;
+	/*width: 302px;*/
+	/*height: 20px;*/
+
+	right: 20px;
+	bottom: 0;
+	position: absolute;
 }
 .g-courseList .m-courseList .pagesUl{
-	
+	/*text-align: left;*/
+	/*float: left;*/
+
 }
 .g-courseList .m-courseList .pagesLi{
 	text-align: center;
@@ -485,7 +564,6 @@
 	color: #666;
 }
 .g-courseList .m-side .hotRank{
-	position: relative;
 	background: #fff;
 	margin-top: 20px;
 	width: 223px;

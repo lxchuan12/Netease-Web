@@ -9,9 +9,9 @@
 		msg.style.display='none';
 		// console.log(cookie.rmdCookie);
 	}
-	// 有bug,待解决
+	// 谷歌下刷新有bug,cookie失效。待解决
 	$.bindEvent(noRmd,'click',closeRmd);
-	
+	// console.log(cookie.rmdCookie);
 	if(cookie.rmdCookie){
 		msg.style.display='none';
 	}
@@ -135,6 +135,10 @@
 		
 		pointer_i[i].index = i;
 		
+		// $.animateMove(pointer_i[i],{opacity:0},function(){
+		// 				console.log('1');
+		// 				// bannerLi[i].style.display='none';
+		// 			})
 		$.bindEvent(pointer_i[i],'click',function (){
 			for(var i=0;i<pointer_i.length;i++){
 				pointer_i[i].className='';
@@ -152,55 +156,170 @@
 			}
 			this.className = "z-crt";
 			bannerLi[that].className='z-crt';
-			// bannerLi[that].style.display='block';
+			bannerLi[that].style.display='block';
 			// bannerLi[that].style.opacity=0.3;
 
-			$.animateMove(bannerLi[that],{opacity:0.3},function(){
+			// $.animateMove(bannerLi[that],{opacity:1},function(){
 						
-					bannerLi[that].style.display='block';
+			// 		bannerLi[that].style.display='block';
 
-			})
+			// })
 		});
 	}
 	
-	// 课程列表
-	// Tab选项卡
-
-	var navUl=$.getEleById('navUl');
-	var navLi=navUl.getElementsByTagName('li');
-	var courseListUlWrap = $.getEleById('courseListUlWrap');
-	var courseListUl = courseListUlWrap.getElementsByTagName('ul');
 	
-	for( var i=0; i<navLi.length; i++ ){
-		
-		navLi[i].index = i;
-		
-		$.bindEvent(navLi[i],'click',function (){
-			for(var i=0;i<navLi.length;i++){
-				navLi[i].className='';
-				courseListUl[i].style.display="none";
+
+
+	//课程列表详情
+	var courseListUlDetail = $.getEleById('courseListUl');
+	var courseListUlDetail2 = $.getEleById('courseListUl2');
+	var pagesUl = $.getEleById('pagesUl');
+	var design = $.getEleById('design');
+	var develop = $.getEleById('develop');
+	var courseList = null;
+	var reqData = {
+		pageNo : 1,
+		psize :20,
+		type : 10
+	};
+	function courseFunc(data){
+		courseList =  JSON.parse(data);
+		var list = courseList.list;
+		var html = '';
+		for (var i = 0, l = list.length; i < l; i++){
+			var item = list[i];
+			var price = item.price || '免费';
+			if( typeof price !== 'string') {
+				price = '&yen;' + price;
 			}
-			this.className = "z-crt";
-			courseListUl[this.index].style.display="block";
+			html += '<li class="courseLi">'
+					+ '<img src="'+ item.bigPhotoUrl +'" alt="'+ item.name +'">'
+					+ '<a href="">'+ item.name +'</a>'
+					+ '<p class="org">'+ item.provider +'</p>'
+					+ '<p class="peopleNum"><span></span>'+ item.learnerCount +'</p>'
+					+ '<span class="price">'+ price +'</span>'
+					+ '<div class="courseDetail">'
+					+ '		<div class="clearfix">'
+					+ '			<div class="pic"><img src="'+ item.bigPhotoUrl +'" alt="'+ item.name +'"></div>'
+					+ '			<div class="content">'
+					+ '				<h3>'+ item.name +'</h3>'
+					+ '				<div class="learnCount"><span>'+ item.learnerCount +'</span>人在学</div>'
+					+ '				<div class="provider">发布者 : '+ item.provider +'</div>'
+					+ '				<div>分类 : '+ item.categoryName +'</div>'
+					+ '			</div>'
+					+ '		</div>'
+					+ '		<p>'+ item.description +'</p>'
+					+ '	</div>';
+		}
+		//分页器
+		var pages = '';
+		var pageObj = $.getPage(courseList.totalPage, 8, courseList.pagination.pageIndex);
+		pages += '<li class="pagesLi"><a href="#" class="prev" index="'+ pageObj.prevIndex +'"><</a></li>';
+
+		for(var j = pageObj.startIndex, len = pageObj.lastIndex; j <= len; j++){
+
+			var pagehtml = '<li class="pagesLi"><a href="#" index="'+ j +'">'+ j +'</a></li>';
+			if( j === courseList.pagination.pageIndex){
+				pagehtml = '<li class="pagesLi"><a href="#" index="'+ j +'" class="z-crt">'+ j +'</a></li>';
+			}
+			pages += pagehtml;
+		}
+					
+		pages += '<li class="pagesLi"><a href="#" class="next" index="'+ pageObj.nextIndex +'">></a></li>';
+		pagesUl.innerHTML = pages;
+		courseListUlDetail.innerHTML = html;
+		courseListUlDetail2.innerHTML = html;
+	};
+	$.ajax('http://study.163.com/webDev/couresByCategory.htm',reqData, courseFunc);
+	$.bindEvent(develop, 'click',function(){
+		design.className = '';
+		develop.className = 'z-crt';
+		reqData.type = 20;
+		$.ajax('http://study.163.com/webDev/couresByCategory.htm',reqData, courseFunc);
+	});
+	$.bindEvent(design, 'click',function(){
+		develop.className = '';
+		design.className = 'z-crt';
+		reqData.type = 10;
+		$.ajax('http://study.163.com/webDev/couresByCategory.htm',reqData, courseFunc);
+	});
+
+	// 分页器绑定点击事件
+	$.bindEvent(pagesUl, 'click', function(ev){
+			var oEvent=ev||event;
+			// 事件委托 ie下srcElement
+			var target=oEvent.srcElement||oEvent.target;
+			$.preventDefault(oEvent);
+			var index = parseInt(target.getAttribute('index'));
+			if(index){
+				reqData.pageNo = index;
+				$.ajax('http://study.163.com/webDev/couresByCategory.htm',reqData, courseFunc);
+			}
 		});
-	}
+	// // 产品设计-编程语言，选项卡
+
+	// var navUl=$.getEleById('navUl');
+	// var navLi=navUl.getElementsByTagName('li');
+	// var courseListUlWrap = $.getEleById('courseListUlWrap');
+	// var courseListUl = courseListUlWrap.getElementsByTagName('ul');
 	
+	// for( var i=0; i<navLi.length; i++ ){
+		
+	// 	navLi[i].index = i;
+		
+	// 	$.bindEvent(navLi[i],'click',function (){
+	// 		for(var i=0;i<navLi.length;i++){
+	// 			navLi[i].className='';
+	// 			courseListUl[i].style.display="none";
+	// 			reqData.type = 20;
+	// 			$.ajax('http://study.163.com/webDev/couresByCategory.htm',reqData, courseFunc);
+	// 		}
+	// 		this.className = "z-crt";
+	// 		reqData.type = 10;
+	// 		$.ajax('http://study.163.com/webDev/couresByCategory.htm',reqData, courseFunc);
+	// 		courseListUl[this.index].style.display="block";
+	// 	});
+	// }
+
+
+	// 分页器
+	/*var pages = $.getEleById('pages');
+	var pagesUl = $.getEleById('pagesUl');
+	// 事件委托
+	function SwitchPages(ev){
+		var oEvent=ev||event;
+		var target=oEvent.srcElement||oEvent.target;
+
+		if(target.nodeName.toLowerCase()=='a'){
+				target.className='z-crt';
+		}
+	}
+	// function leavePages(ev){
+	// 	var oEvent=ev||event;
+	// 	var target=oEvent.srcElement||oEvent.target;
+
+	// 	if(target.nodeName.toLowerCase()=='a'){
+	// 			target.className='';
+	// 	}
+	// }
+	
+	// $.bindEvent(pagesUl,'mouseout',leavePages);
+	$.bindEvent(pagesUl,'click',SwitchPages);*/
+
+
 
 
 	// 最热排行
-	var hotRank = $.getEleById('hotRank');
 	var hotRankUl = $.getEleById('hotRankUl');
 	var hotRankUlList = hotRankUl.getElementsByTagName('li');
-	// var hotRankUl2 = $.getEleById('hotRankUl2');
 	var hotRankLi = null;
 
 	function hotRankUlMove(data){
 		hotRankLi = JSON.parse(data);
 		var html = '';
-		var html2 = '';
 		//每次向上移动一个，无缝滚动
 		
-		//生成html
+		//innerHTML
 		for(var i = 0; i < 20; i++){
 			var item = hotRankLi[i];
 			var str = '<li class="hotRankLi clearfix">'
@@ -208,22 +327,16 @@
 					+'		<div class="hotRankInfo"><a href="#">'+item.name+'</a>'
 					+'		<p class="person"><span></span>'+item.learnerCount+'</p></div>'
 					+'</li>';
-			// if(i < 10){
-			// 	html += str;
-			// }else{
-			// 	html2 += str;
-			// }
 			html+=str;
 		}
 		
 		hotRankUl.innerHTML = html;
-		// hotRankUl2.innerHTML = html2;
 		
 	};
 	$.ajax('http://study.163.com/webDev/hotcouresByCategory.htm',{}, hotRankUlMove);
 	function listMove(){
 		var oneSize=hotRankUlList[0].offsetHeight+20;
-		var iNum=2;
+		var iNum=1;
 		var bBtn=true;
 		function getHeight(){
 			hotRankUl.style.height=(hotRankUlList.length-1)*oneSize+'px';
@@ -241,7 +354,7 @@
 					
 					for (var i = 0; i < iNum; i++) {
 						hotRankUl.removeChild(hotRankUlList[0]);
-						hotRankUl.style.top=-70;
+						hotRankUl.style.top=0;
 					};
 					bBtn=true;
 				});
@@ -250,16 +363,51 @@
 		}
 		moveList();
 	};
-	var listTimer = setInterval(listMove,5000);
-	$.bindEvent(hotRank, 'mouseover', function(e){
-		clearInterval(listTimer);
+	var listMoveTimer = setInterval(listMove,5000);
+	$.bindEvent(hotRankUl, 'mouseover', function(){
+		clearInterval(listMoveTimer);
 	});
-	$.bindEvent(hotRank, 'mouseout', function(e){
-		listTimer = setInterval(listMove,5000);
+	$.bindEvent(hotRankUl, 'mouseout', function(){
+		listMoveTimer = setInterval(listMove,5000);
 	});
 
 
 
+
+
+
+	//响应式
+	
+	var g_courseList = $.getEleById('g-courseList');
+	var m_courseList = $.getEleById('m-courseList');
+	var size_courseListUl = $.getEleById('courseListUl');
+	var setmin = false;
+	var setmax = false;
+	function changeWidth(){
+		var w = document.body.clientWidth || document.documentElement.clientWidth;
+		if(w < 1205){
+			if(!setmin){
+				g_courseList.style.width = '962px';
+				m_courseList.style.width = '735px';
+				size_courseListUl.style.width = '735px';
+				reqData.psize = 15;
+				$.ajax('http://study.163.com/webDev/couresByCategory.htm',reqData, courseFunc);
+				setmin = true;
+				setmax = false;
+			}
+		} else {
+			if(!setmax){
+				g_courseList.style.width = '1206px';
+				m_courseList.style.width = '980px';
+				size_courseListUl.style.width = '980px';
+				reqData.psize = 20;
+				$.ajax('http://study.163.com/webDev/couresByCategory.htm',reqData, courseFunc);
+				setmax = true;
+				setmin = false;
+			}
+		}
+	};
+	$.bindEvent(window, 'resize', changeWidth);
 
 
 

@@ -175,9 +175,9 @@ var $ = (function(){
 	 */
 	function preventDefault(event){
 		if(event.preventDefault){
-			event.preventDefault;
+			event.preventDefault();
 		}else{
-			event.returnValue=false;
+			event.returnValue = false;
 		}
 	}
 	/**
@@ -227,7 +227,38 @@ var $ = (function(){
 	   
     }
 
+    function getPage(totalPage, size, pageNow){
+	    var prevIndex,  startIndex, lastIndex, nextIndex;
+		var pageGroup = Math.ceil(totalPage/size);
+		for(var i = 1; i < pageGroup; i++){
+			if(pageNow <= i*size){
+				startIndex = (i - 1)*size + 1;
+				break;
+			}
+		}
+	    lastIndex = startIndex + size - 1;
+	    lastIndex = (lastIndex > totalPage) ? totalPage : lastIndex;
 
+	    if(startIndex === 1){
+	    	prevIndex = 0;
+	    }else{
+			prevIndex = startIndex - 1;
+	    }
+
+	    if(lastIndex === totalPage){
+	    	nextIndex = 0;
+	    }else{
+			nextIndex = lastIndex + 1;
+	    }
+	     
+	   
+	   	return {
+	   		prevIndex : prevIndex,
+	   		nextIndex : nextIndex,
+    		startIndex : startIndex,
+       		lastIndex : lastIndex
+	    };
+    };
 
 
 
@@ -248,7 +279,8 @@ var $ = (function(){
 		setCookie			: setCookie,
 		trim				: trim,
 		preventDefault		: preventDefault,
-		ajax				: ajax
+		ajax				: ajax,
+		getPage				: getPage
 
 	};
 
