@@ -44,7 +44,6 @@
 				focus.style.display = 'none';
 				followWrap.style.display = 'inline-block';
 				fansNum.innerHTML = Number(fansNum.innerHTML) + 1;
-				// $.textContent(fansNum) = Number($.textContent(fansNum)) + 1; 
 			}else{
 				alert('关注失败');
 			}
@@ -55,15 +54,12 @@
 		focus.style.display = 'inline-block';
 		followWrap.style.display = 'none';
 		fansNum.innerHTML =  Number(fansNum.innerHTML) - 1 + '';
-		// $.textContent(fansNum) =  Number($.textContent(fansNum)) - 1 + '';
 	};
 	function doFocus(){
 		if(cookie.loginSuc === '1'){
 			doFollow();
-			// console.log('1');
 		}else{
 			showLogin();
-			// console.log('2');
 		}
 	};
 	
@@ -172,10 +168,10 @@
 
 	//课程列表详情
 	var courseListUlDetail = $.getEleById('courseListUl');
-	var courseListUlDetail2 = $.getEleById('courseListUl2');
 	var pagesUl = $.getEleById('pagesUl');
-	var design = $.getEleById('design');
-	var develop = $.getEleById('develop');
+	var navUl = $.getEleById('navUl');
+	var design = navUl.getElementsByTagName('li')[0];
+	var develop = navUl.getElementsByTagName('li')[1];
 	var courseList = null;
 	var reqData = {
 		pageNo : 1,
@@ -228,7 +224,6 @@
 		pages += '<li class="pagesLi"><a href="#" class="next" index="'+ pageObj.nextIndex +'">></a></li>';
 		pagesUl.innerHTML = pages;
 		courseListUlDetail.innerHTML = html;
-		courseListUlDetail2.innerHTML = html;
 	};
 	$.ajax('http://study.163.com/webDev/couresByCategory.htm',reqData, courseFunc);
 	$.bindEvent(develop, 'click',function(){
@@ -246,65 +241,17 @@
 
 	// 分页器绑定点击事件
 	$.bindEvent(pagesUl, 'click', function(ev){
-			var oEvent=ev||event;
-			// 事件委托 ie下srcElement
-			var target=oEvent.srcElement||oEvent.target;
-			$.preventDefault(oEvent);
-			var index = parseInt(target.getAttribute('index'));
-			if(index){
-				reqData.pageNo = index;
-				$.ajax('http://study.163.com/webDev/couresByCategory.htm',reqData, courseFunc);
-			}
-		});
-	// // 产品设计-编程语言，选项卡
-
-	// var navUl=$.getEleById('navUl');
-	// var navLi=navUl.getElementsByTagName('li');
-	// var courseListUlWrap = $.getEleById('courseListUlWrap');
-	// var courseListUl = courseListUlWrap.getElementsByTagName('ul');
-	
-	// for( var i=0; i<navLi.length; i++ ){
-		
-	// 	navLi[i].index = i;
-		
-	// 	$.bindEvent(navLi[i],'click',function (){
-	// 		for(var i=0;i<navLi.length;i++){
-	// 			navLi[i].className='';
-	// 			courseListUl[i].style.display="none";
-	// 			reqData.type = 20;
-	// 			$.ajax('http://study.163.com/webDev/couresByCategory.htm',reqData, courseFunc);
-	// 		}
-	// 		this.className = "z-crt";
-	// 		reqData.type = 10;
-	// 		$.ajax('http://study.163.com/webDev/couresByCategory.htm',reqData, courseFunc);
-	// 		courseListUl[this.index].style.display="block";
-	// 	});
-	// }
-
-
-	// 分页器
-	/*var pages = $.getEleById('pages');
-	var pagesUl = $.getEleById('pagesUl');
-	// 事件委托
-	function SwitchPages(ev){
 		var oEvent=ev||event;
+		// 事件委托 ie下srcElement
 		var target=oEvent.srcElement||oEvent.target;
-
-		if(target.nodeName.toLowerCase()=='a'){
-				target.className='z-crt';
+		$.preventDefault(oEvent);
+		var index = parseInt(target.getAttribute('index'));
+		if(index){
+			reqData.pageNo = index;
+			$.ajax('http://study.163.com/webDev/couresByCategory.htm',reqData, courseFunc);
 		}
-	}
-	// function leavePages(ev){
-	// 	var oEvent=ev||event;
-	// 	var target=oEvent.srcElement||oEvent.target;
+	});
 
-	// 	if(target.nodeName.toLowerCase()=='a'){
-	// 			target.className='';
-	// 	}
-	// }
-	
-	// $.bindEvent(pagesUl,'mouseout',leavePages);
-	$.bindEvent(pagesUl,'click',SwitchPages);*/
 
 
 
@@ -376,7 +323,7 @@
 
 
 
-	//响应式
+	//宽窄屏实现
 	
 	var g_courseList = $.getEleById('g-courseList');
 	var m_courseList = $.getEleById('m-courseList');
