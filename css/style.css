@@ -231,15 +231,20 @@
 }
 .m-banner #bannerUl{
 	width: 100%;
+	position: relative;
+}
+.m-banner #bannerUl li{
+	z-index: 0;
+	top: 0;
+	left: 0;
+	height: 460px;
+	position: absolute;
 }
 .m-banner #bannerUl li a img{
 	height: 460px;
 }
-.m-banner #bannerUl li{
-	z-index: 0;
-}
 .m-banner #bannerUl li.z-crt{
-	z-index: 10px;
+	z-index: 9;
 }
 .m-banner #pointer{
 	display: inline-block;

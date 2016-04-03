@@ -81,7 +81,7 @@ var $ = (function(){
 					} else {
 						cur = parseInt(getStyle(obj, attr));
 					};
-					var speed = (json[attr] - cur) / 3;
+					var speed = (json[attr] - cur) / 10;
 					//记得取整
 					speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);	
 					if (cur != json[attr]) {	
@@ -100,7 +100,7 @@ var $ = (function(){
 				};
 	    };
 	    clearInterval(obj.timer);
-	    obj.timer = setInterval(move, 30);
+	    obj.timer = setInterval(move, 50);
 	}
 	/**
 	 * [textContent 节点内容]
