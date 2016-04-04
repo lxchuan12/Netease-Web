@@ -10,7 +10,7 @@ var login_module = (function(){
 		$.setCookie('rmdCookie',1,new Date(3016,4));
 		msg.style.display='none';
 	}
-	// 谷歌下刷新有bug,cookie失效。待解决
+	
 	$.bindEvent(noRmd,'click',closeRmd);
 	// console.log(cookie.rmdCookie);
 	if(cookie.rmdCookie){
@@ -275,7 +275,7 @@ var course_module = (function(){
 		var target=oEvent.srcElement||oEvent.target;
 		$.preventDefault(oEvent);
 		var index = parseInt(target.getAttribute('index'));
-		
+
 		if(index){
 			reqData.pageNo = index;
 			$.ajax(url,reqData, loadCourse);

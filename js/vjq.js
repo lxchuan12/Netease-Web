@@ -6,37 +6,7 @@ var $ = (function(){
 	function getEleById(id){
 		return document.getElementById(id);
 	}
-	/**
-	 * 通过class获取元素、兼容IE6,7,8
-	 * @param  {[type]} element [元素节点]
-	 * @param  {[type]} names   [class样式]
-	 */
-    function getEleByClass(element, names) {
-	    if (element.getElementsByClassName) { //特性侦测
-	      return element.getElementsByClassName(names);
-	    } else {
-	      var elements = element.getElementsByTagName('*');
-	      var result = [];
-	      var element,
-	          classNameStr,
-	          flag;
-	      names = names.split(' ');
-	      for (var i = 0; element = elements[i]; i++) {
-	          classNameStr = ' ' + element.className + ' ';
-	          flag = true;
-	          for (var j = 0, name; name = names[j]; j++) {
-	              if (classNameStr.indexOf(' ' + name + '') == -1){
-	                  flag = false;
-	                  break;
-	              }
-	          }
-	          if (flag) {
-	              result.push(element);
-	          }
-	      }
-	      return result;
-	  	}
-	}
+	
 	/**
 	 * [bindEvent 事件绑定]
 	 * @param  {[type]}   obj    [元素节点]
@@ -102,17 +72,7 @@ var $ = (function(){
 	    clearInterval(obj.timer);
 	    obj.timer = setInterval(move, 50);
 	}
-	/**
-	 * [textContent 节点内容]
-	 * @param  {[type]} obj [元素节点]
-	 */
-	function textContent(obj){
-		if(obj.textContent){
-			return obj.textContent;
-		}else{
-			obj.innerText;
-		}
-	}
+
 
 	/**
 	 * 获取cookie
@@ -213,7 +173,7 @@ var $ = (function(){
 	   	if(xhr){
 	   		xhr.onload=function(){
 	             if(callback){
-	             	callback(xhr.responseText)
+	             	callback(xhr.responseText);
 	             };
 			};
 	     xhr.send(null);
@@ -266,10 +226,8 @@ var $ = (function(){
 
 	return {
 		getEleById 			: getEleById,
-		getEleByClass		: getEleByClass,
 		bindEvent			: bindEvent,
 		animateMove			: animateMove,
-		textContent			: textContent,
 		getCookie			: getCookie,
 		setCookie			: setCookie,
 		trim				: trim,
