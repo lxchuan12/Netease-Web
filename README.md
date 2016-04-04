@@ -1,7 +1,7 @@
 # Netease-Web
 网易云课堂前端开发工程师微专业第三期学员，Web前端开发大作业：网易教育产品部。
 
-###4月5日
+###4月5日，创建gh-pages分支，打包提交作业。
 <a href="http://lxchuan12.github.io/Netease-Web">查看项目Demo</a>
 
 ##Web前端开发实践需求说明
