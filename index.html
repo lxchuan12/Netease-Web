@@ -23,7 +23,7 @@
 	<div id="videoWin">
 		<div id="videoWinClose"></div>
 		<h4>请观看下面的视频</h4>
-		<video  id="video" src="http://mov.bn.netease.com/open-movie/nos/mp4/2014/12/30/SADQ86F5S_shd.mp4" controls  width="889" height="567" type="video/mp4">
+		<video  id="video" src="http://mov.bn.netease.com/open-movie/nos/mp4/2014/12/30/SADQ86F5S_shd.mp4" controls  width="889" height="500" type="video/mp4">
 				你的浏览器不支持html5 video标签
 			</video>
 	</div>
@@ -60,8 +60,8 @@
 	<div class="m-banner" id="m-banner">
 		<ul id="bannerUl">
 		<li class="z-crt"><a href="http://open.163.com/" target="_blank"><img src="img/banner1.jpg" alt="网易公开课"></a></li>
-		<li><a href="http://open.163.com/" target="_blank"><img src="img/banner2.jpg" alt="元课堂"></a></li>
-		<li><a href="http://open.163.com/" target="_blank"><img src="img/banner3.jpg" alt="中国大学MOOC"></a></li>
+		<li><a href="http://study.163.com/" target="_blank"><img src="img/banner2.jpg" alt="元课堂"></a></li>
+		<li><a href="http://www.icourse163.org/" target="_blank"><img src="img/banner3.jpg" alt="中国大学MOOC"></a></li>
 		</ul>
 		<div id="pointer">
 			<i class="z-crt"></i>
@@ -95,12 +95,14 @@
 			</div>
 		</div>
 	</div>
-	<div class="g-workPlace clearfix">
-		<div class="workPlace"><img src="img/workPlace1.jpg" alt="工作环境"></div>
-		<div class="workPlace"><img src="img/workPlace2.jpg" alt="工作环境"></div>
-		<div class="workPlace"><img src="img/workPlace3.jpg" alt="工作环境"></div>
-		<div class="workPlace"><img src="img/workPlace4.jpg" alt="工作环境"></div>
-		<div class="workPlace"><img src="img/workPlace5.jpg" alt="工作环境"></div>
+	<div class="g-workPlaceWrap">
+		<div class="g-workPlace clearfix">
+			<div class="workPlace"><img src="img/workPlace1.jpg" alt="工作环境"></div>
+			<div class="workPlace"><img src="img/workPlace2.jpg" alt="工作环境"></div>
+			<div class="workPlace"><img src="img/workPlace3.jpg" alt="工作环境"></div>
+			<div class="workPlace"><img src="img/workPlace4.jpg" alt="工作环境"></div>
+			<div class="workPlace"><img src="img/workPlace5.jpg" alt="工作环境"></div>
+		</div>
 	</div>
 	<!-- g-courseListWrap -->
 	<div class="g-courseListWrap">
@@ -159,7 +161,7 @@
 				</div>
 				<div class="hotRank" id="hotRank">
 					<h3>最热排行</h3>
-					<div class="hotRankWrap">
+					<div class="hotRankWrap" id="hotRankWrap">
 						<ul class="hotRankUl" id="hotRankUl">
 							<!-- <li class="hotRankLi clearfix">
 							<img src="img/hotRank.png" alt="背景">
@@ -167,6 +169,7 @@
 							<p class="person"><span></span>21567</p></div>
 							</li> -->
 						</ul>
+						<ul class="hotRankUl" id="hotRankUl2"></ul>
 					</div>
 				</div>
 			</div>
@@ -201,7 +204,7 @@
 		</div>
 	</div>
 	<!-- /g-footer -->
-	<script src="js/md5.js"></script>
+	<script src="js/md5.min.js"></script>
 	<script src="js/vjq.js"></script>
 	<script src="js/main.js"></script>
 </body>

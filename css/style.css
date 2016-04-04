@@ -71,11 +71,11 @@
 	left: 50%;
 	top: 50%;
 	margin-left: -475px;
-	margin-top: -338px;
+	margin-top: -304px;
 	/* IE8及以下 不支持transform */
 	/*transform: translate(-50%,-50%); */
 	width: 890px;
-	height: 607px;
+	height: 540px;
 	background: #fff;
 	padding: 29px 30px 40px 30px;
 	z-index: 999;
@@ -312,28 +312,40 @@
 	text-decoration: underline;
 }
 /* g-workPlace */
+.g-workPlaceWrap{
+	margin-left: -4px;
+}
 .g-workPlace{
-	width:100%;
-	height: 220px;
-	
-	background: #f8f8f8;
+	width: 100%;
 	display: table;
 	table-layout: fixed;
-	overflow: hidden;
 }
 .g-workPlace .workPlace{
 	width: 20%;
+	padding-left: 4px;
+	height: 220px;
+	overflow: hidden;
 	display: table-cell;
-	/*float: left;*/
-}
-.g-workPlace .workPlace+.workPlace{
-	margin-left: 4px;
 }
 .g-workPlace .workPlace img{
-	/*width: 100%;*/
-	width: 312px;
-	height: 220px;
+	width: 100%;
+	height: 100%;
 }
+/*.m-workPlace {
+    position: relative;
+    top: 0;
+    left: 50%;
+    width: 1632px;
+    height: 220px;
+    margin-left: -808px;
+    margin-bottom: 81px;
+}
+
+.g-workPlace {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}*/
 
 /* g-courseListWrap */
 .g-courseListWrap{
@@ -482,13 +494,12 @@
 }
 .g-courseList .m-courseList .courseListUl .courseLi .courseDetail p{
 	text-indent: 2em;
-	margin: 20px 5px 20px 5px;
+	margin: 20px 0 20px 0;
 	width: 427px;
 	font-size: 12px;
 	line-height: 24px;
 	white-space: pre-wrap;
 	overflow: hidden;
-	
 }
 /* 分页器g-courseList .m-courseList .pages */
 .g-courseList .m-courseList .pages{

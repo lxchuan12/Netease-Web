@@ -118,23 +118,22 @@ var $ = (function(){
 	 * 获取cookie
 	 * @return {[object]} [cookie]
 	 */
-	function getCookie(){
-		var cookie = {};
-		var all = document.cookie;
-		if(!all) return cookie;
-		var arr = all.split('; ');
-		for(var i = 0, l = arr.length; i < l; i++){
-			var item = arr[i];
-			var p = item.indexOf('=');
-			var name = item.slice(0, p);
-			name = decodeURIComponent(name);
-			var value = item.slice(p + 1);
-			value = decodeURIComponent(value);
-			cookie[name] = value;
-		}
-		return cookie;
-
-	}
+	function getCookie() {
+	    var cookie = {};
+	    var all = document.cookie;
+	    if (all === '') return cookie;
+	    var list = all.split('; ');
+	    for (var i = 0, len = list.length; i < len; i++) {
+	        var item = list[i];
+	        var p = item.indexOf('=');
+	        var name = item.substring(0, p);
+	        name = decodeURIComponent(name);
+	        var value = item.substring(p + 1);
+	        value = decodeURIComponent(value);
+	        cookie[name] = value;
+	    }
+	    return cookie;
+	};
 	/**
 	 * [setCookie 设置cookie]
 	 * @param {[type]} name    [cookie名]
@@ -144,21 +143,17 @@ var $ = (function(){
 	 * @param {[type]} domain  [作用域]
 	 * @param {[type]} secure  [https协议时生效]
 	 */
-	function setCookie(name, value, expires, path, domain, secure){
-		var cookie = encodeURIComponent(name) + '=' + encodeURIComponent(value);
-		if(expires instanceof Date) {
-			cookie += '; expires=' + expires.toGMTString();
-		}
-		if(path){
-			cookie += '; path=' + path;
-		}
-		if(domain){
-			cookie += '; domain=' + domain;
-		}
-		if(secure){
-			cookie += '; secure';
-		}
-		document.cookie = cookie;
+	function setCookie(name, value, expires, path, domain, secure) {
+    var cookie = encodeURIComponent(name) + '=' + encodeURIComponent(value);
+    if (expires)
+        cookie += '; expires=' + expires.toGMTString();
+    if (path)
+        cookie += '; path=' + path;
+    if (domain)
+        cookie += '; domain=' + domain;
+    if (secure)
+        cookie += '; secure=' + secure;
+    document.cookie = cookie;
 	};
 	/**
 	 * [trim 去除空格]
@@ -182,12 +177,12 @@ var $ = (function(){
 	}
 	/**
 	 * [ajax 异步加载]
-	 * @param  {[type]}   url      [地址]
-	 * @param  {[type]}   options  [选项]
+	 * @param  {[type]}   url      [请求地址]
+	 * @param  {[type]}   options  [请求的参数]
 	 * @param  {Function} callback [回调函数]
 	 */
 	function ajax(url,options,callback){
-	    var createXHR=function(url){
+	    function createXHR(url){
 	        var xhr = new XMLHttpRequest();
 	        if('withCredentials' in xhr){
 	        	xhr.open('GET', url, true);
@@ -200,7 +195,7 @@ var $ = (function(){
 	        return xhr;
 	    };
 
-	    var serialize=function(data){
+	    function serialize(data){
 	        if(!data) return '';
 	        var pairs = [];
 	        for(var name in data){

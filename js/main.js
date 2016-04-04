@@ -1,13 +1,14 @@
 (function(){
 
+// 不再提醒，登录模块
+var login_module = (function(){
 	//不再提醒
 	var cookie = $.getCookie();
 	var noRmd=$.getEleById('never_remind');
 	var msg=$.getEleById('g-msg');
 	function closeRmd(){
-		$.setCookie('rmdCookie', 1);
+		$.setCookie('rmdCookie',1,new Date(3016,4));
 		msg.style.display='none';
-		// console.log(cookie.rmdCookie);
 	}
 	// 谷歌下刷新有bug,cookie失效。待解决
 	$.bindEvent(noRmd,'click',closeRmd);
@@ -15,6 +16,7 @@
 	if(cookie.rmdCookie){
 		msg.style.display='none';
 	}
+
 	//登录弹窗
 	var mask=$.getEleById('mask');
 	var focus=$.getEleById('focus');
@@ -40,7 +42,7 @@
 	function doFollow(){
 		$.ajax('http://study.163.com/webDev/attention.htm',{}, function(data){
 			if(Number(data) === 1){
-				$.setCookie('followSuc', 1);
+				$.setCookie('followSuc',1,new Date(3016,4));
 				focus.style.display = 'none';
 				followWrap.style.display = 'inline-block';
 				fansNum.innerHTML = Number(fansNum.innerHTML) + 1;
@@ -50,7 +52,7 @@
 		});
 	};
 	function unFollow(){
-		$.setCookie('followSuc', 0);
+		$.setCookie('followSuc',0,new Date(3016,4));
 		focus.style.display = 'inline-block';
 		followWrap.style.display = 'none';
 		fansNum.innerHTML =  Number(fansNum.innerHTML) - 1 + '';
@@ -77,7 +79,7 @@
 		};
 		$.ajax('http://study.163.com/webDev/login.htm', requestData,function(data){
 			if(Number(data) === 1){
-				$.setCookie('loginSuc', 1);
+				$.setCookie('loginSuc',1,new Date(3016,4));
 				doFollow();
 				closeLogin();
 			}else{
@@ -95,9 +97,10 @@
 	// 遮罩点击隐藏
 	$.bindEvent(mask,'click',closeLogin);
 
+})();
 
-
-	//视频弹窗
+// 视频弹窗模块
+var video_module = (function(){
 	var videoImg=$.getEleById('videoImg');
 	var videoWin=$.getEleById('videoWin');
 	var videoWinClose=$.getEleById('videoWinClose');
@@ -119,7 +122,10 @@
 	// 遮罩点击隐藏，视频暂停
 	$.bindEvent(mask,'click',closeVedioWin);
 
+})();
 
+// 轮播图切换模块
+var carousel_module = (function(){
 	// 轮播图(不是无缝滚动，是淡入淡出)(类似选项卡)
 
 	var bannerUl=$.getEleById('bannerUl');
@@ -138,7 +144,7 @@
 			
 			for(var i=0;i<pointer_i.length;i++){
 				pointer_i[i].className='';
-				bannerLi[i].className='';filter
+				bannerLi[i].className='';
 				bannerLi[i].style.filter='0';
 				bannerLi[i].style.opacity='0';
 				bannerLi[i].style.display='none';
@@ -184,14 +190,18 @@
 	$.bindEvent(pointer,'mouseover',stopPlay);
 	$.bindEvent(pointer,'mouseout',startPlay);
 
+})();
 
-	//课程列表详情
+//课程列表详情和分页模块
+var course_module = (function(){
+	
 	var courseListUlDetail = $.getEleById('courseListUl');
 	var pagesUl = $.getEleById('pagesUl');
 	var navUl = $.getEleById('navUl');
 	var design = navUl.getElementsByTagName('li')[0];
 	var develop = navUl.getElementsByTagName('li')[1];
 	var courseList = null;
+	var url = 'http://study.163.com/webDev/couresByCategory.htm';
 	var reqData = {
 		pageNo : 1,
 		psize :20,
@@ -205,7 +215,7 @@
 			var item = list[i];
 			var price = item.price || '免费';
 			if( typeof price !== 'string') {
-				price = '&yen;' + price;
+				price = '￥' + price;
 			}
 			html += '<li class="courseLi">'
 					+ '<img src="'+ item.bigPhotoUrl +'" alt="'+ item.name +'">'
@@ -229,7 +239,7 @@
 		//分页器
 		var pages = '';
 		var pageObj = $.getPage(courseList.totalPage, 8, courseList.pagination.pageIndex);
-		pages += '<li class="pagesLi"><a href="#" class="prev" index="'+ pageObj.prevIndex +'"><</a></li>';
+		pages += '<li class="pagesLi"><a href="#" class="prev"  index="'+ pageObj.prevIndex +'"><</a></li>';
 
 		for(var j = pageObj.startIndex, len = pageObj.lastIndex; j <= len; j++){
 
@@ -244,18 +254,18 @@
 		pagesUl.innerHTML = pages;
 		courseListUlDetail.innerHTML = html;
 	};
-	$.ajax('http://study.163.com/webDev/couresByCategory.htm',reqData, loadCourse);
+	$.ajax(url,reqData, loadCourse);
 	$.bindEvent(develop, 'click',function(){
 		design.className = '';
 		develop.className = 'z-crt';
 		reqData.type = 20;
-		$.ajax('http://study.163.com/webDev/couresByCategory.htm',reqData, loadCourse);
+		$.ajax(url,reqData, loadCourse);
 	});
 	$.bindEvent(design, 'click',function(){
 		develop.className = '';
 		design.className = 'z-crt';
 		reqData.type = 10;
-		$.ajax('http://study.163.com/webDev/couresByCategory.htm',reqData, loadCourse);
+		$.ajax(url,reqData, loadCourse);
 	});
 
 	// 分页器绑定点击事件
@@ -265,23 +275,59 @@
 		var target=oEvent.srcElement||oEvent.target;
 		$.preventDefault(oEvent);
 		var index = parseInt(target.getAttribute('index'));
-		if(index>0&&index<9){
+		
+		if(index){
 			reqData.pageNo = index;
-			$.ajax('http://study.163.com/webDev/couresByCategory.htm',reqData, loadCourse);
+			$.ajax(url,reqData, loadCourse);
 		}
-
-		// if(index==9){
-		// 	index++;
-		// }
-		console.log(index);
 		
 	});
+	//宽窄屏实现模块
+	var changeWidth_module = (function(){
 
+		var g_courseList = $.getEleById('g-courseList');
+		var m_courseList = $.getEleById('m-courseList');
+		var size_courseListUl = $.getEleById('courseListUl');
+		// var url = 'http://study.163.com/webDev/couresByCategory.htm';
+		/*/ var reqData = {
+			pageNo : 1,
+			psize :20,
+			type : 10
+		};*/
+		var setMin = false;
+		var setMax = false;
+		function changeWidth(){
+			var w = document.body.clientWidth || document.documentElement.clientWidth;
+			if(w < 1205){
+				if(!setMin){
+					g_courseList.style.width = '962px';
+					m_courseList.style.width = '735px';
+					size_courseListUl.style.width = '735px';
+					reqData.psize = 15;
+					$.ajax(url,reqData, loadCourse);
+					setMin = true;
+					setMax = false;
+				}
+			} else {
+				if(!setMax){
+					g_courseList.style.width = '1206px';
+					m_courseList.style.width = '980px';
+					size_courseListUl.style.width = '980px';
+					reqData.psize = 20;
+					$.ajax(url,reqData, loadCourse);
+					setMax = true;
+					setMin = false;
+				}
+			}
+		};
+		$.bindEvent(window, 'resize', changeWidth);
 
+	})();
 
+})();
 
-
-	// 最热排行
+// 右侧最热排行模块
+var hotRank_module = (function(){
 	var hotRankUl = $.getEleById('hotRankUl');
 	var hotRankUlList = hotRankUl.getElementsByTagName('li');
 	var hotRankLi = null;
@@ -289,8 +335,6 @@
 	function hotRankUlMove(data){
 		hotRankLi = JSON.parse(data);
 		var html = '';
-		//每次向上移动一个，无缝滚动
-		
 		//innerHTML
 		for(var i = 0; i < 20; i++){
 			var item = hotRankLi[i];
@@ -306,37 +350,17 @@
 		
 	};
 	$.ajax('http://study.163.com/webDev/hotcouresByCategory.htm',{}, hotRankUlMove);
+	//无缝滚动，每次向上运动一个。
 	function listMove(){
-		// console.log(hotRankUlList);
-		// banner切换时，没有生成li，所以会报错。
-		var oneSize=70;
-		var iNum=1;
-		var bBtn=true;
-		function getHeight(){
-			hotRankUl.style.height=(hotRankUlList.length-1)*oneSize+'px';
-		};
-		getHeight();
-		function moveList(){
-			if(bBtn){
-				bBtn=false;
-				for (var i = 0; i < iNum; i++) {
-					var oLi=hotRankUlList[i].cloneNode(true);
-					hotRankUl.appendChild(oLi);
-					getHeight();
-				};
-				$.animateMove(hotRankUl,{top:-oneSize},function(){
-					
-					for (var i = 0; i < iNum; i++) {
-						hotRankUl.removeChild(hotRankUlList[0]);
-						hotRankUl.style.top=0;
-					};
-					bBtn=true;
-				});
-
-			}
+		var hotRankWrap = $.getEleById('hotRankWrap');
+		var hotRankUl2 = $.getEleById('hotRankUl2');
+		hotRankUl2.innerHTML=hotRankUl.innerHTML;
+		if (hotRankWrap.scrollTop>=(hotRankUl.scrollHeight/2)) {//当滚动的距离大于等于ul的高度时，把它的位置归到初始化
+				hotRankWrap.scrollTop=0;
+			}else{
+				hotRankWrap.scrollTop+=70;
 		}
-		moveList();
-	};
+	}
 	var listMoveTimer = setInterval(listMove,5000);
 	$.bindEvent(hotRankUl, 'mouseover', function(){
 		clearInterval(listMoveTimer);
@@ -345,43 +369,7 @@
 		listMoveTimer = setInterval(listMove,5000);
 	});
 
-
-
-
-
-
-	//宽窄屏实现
-	
-	var g_courseList = $.getEleById('g-courseList');
-	var m_courseList = $.getEleById('m-courseList');
-	var size_courseListUl = $.getEleById('courseListUl');
-	var setmin = false;
-	var setmax = false;
-	function changeWidth(){
-		var w = document.body.clientWidth || document.documentElement.clientWidth;
-		if(w < 1205){
-			if(!setmin){
-				g_courseList.style.width = '962px';
-				m_courseList.style.width = '735px';
-				size_courseListUl.style.width = '735px';
-				reqData.psize = 15;
-				$.ajax('http://study.163.com/webDev/couresByCategory.htm',reqData, loadCourse);
-				setmin = true;
-				setmax = false;
-			}
-		} else {
-			if(!setmax){
-				g_courseList.style.width = '1206px';
-				m_courseList.style.width = '980px';
-				size_courseListUl.style.width = '980px';
-				reqData.psize = 20;
-				$.ajax('http://study.163.com/webDev/couresByCategory.htm',reqData, loadCourse);
-				setmax = true;
-				setmin = false;
-			}
-		}
-	};
-	$.bindEvent(window, 'resize', changeWidth);
+})();
 
 
 
