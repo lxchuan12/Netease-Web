@@ -312,25 +312,22 @@
 	text-decoration: underline;
 }
 /* g-workPlace */
-.g-workPlaceWrap{
-	margin-left: -4px;
+.g-workPlace {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background: #f8f8f8;
 }
-.g-workPlace{
-	width: 100%;
-	display: table;
-	table-layout: fixed;
+.m-workPlace {
+    position: relative;
+    top: 0;
+    left: 50%;
+    width: 1632px;
+    height: 220px;
+    margin-left: -808px;
+    margin-bottom: 81px;
 }
-.g-workPlace .workPlace{
-	width: 20%;
-	padding-left: 4px;
-	height: 220px;
-	overflow: hidden;
-	display: table-cell;
-}
-.g-workPlace .workPlace img{
-	width: 100%;
-	height: 100%;
-}
+
 
 
 /* g-courseListWrap */
