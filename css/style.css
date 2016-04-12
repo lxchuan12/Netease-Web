@@ -236,11 +236,14 @@
 .m-banner #bannerUl li{
 	z-index: 0;
 	top: 0;
-	left: 0;
+	left: 50%;
+	margin-left: -826px;
+    width: 1652px;
 	height: 460px;
 	position: absolute;
 }
 .m-banner #bannerUl li a img{
+	width: 1652px;
 	height: 460px;
 }
 .m-banner #bannerUl li.z-crt{
@@ -325,7 +328,6 @@
     width: 1632px;
     height: 220px;
     margin-left: -808px;
-    margin-bottom: 81px;
 }
 
 
@@ -538,7 +540,9 @@
 	background: #FFF;
 	box-shadow:0 1px 2px #ddd;
 	margin-bottom: 1px;
-
+}
+.g-courseList .m-side .videoInfo:hover{
+	box-shadow:2px 2px 4px #AEAEAE;
 }
 .g-courseList .m-side .videoInfo h3,
 .g-courseList .m-side .hotRank h3{
@@ -570,6 +574,9 @@
 	width: 223px;
 	height:778px;
 	box-shadow: 1px 2px 2px #d4d3d3;
+}
+.g-courseList .m-side .hotRank:hover{
+	box-shadow:2px 2px 4px #AEAEAE;
 }
 .g-courseList .m-side .hotRankWrap{
 	position: relative;
